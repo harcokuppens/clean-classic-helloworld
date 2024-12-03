@@ -1,0 +1,5 @@
+compiler: cocl
+paths:
+  - src
+  - clean/lib/StdEnv/
+  - clean/lib/ArgEnv/

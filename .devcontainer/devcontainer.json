@@ -1,0 +1,18 @@
+{
+	"image": "cleanlang/classic-clean",
+	"build": {
+		"dockerfile": "./Dockerfile",
+		//    "args": {
+		//      "unused": "42"
+		//    },
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"TOPSoftware.clean-vs-code",
+				"eamodio.gitlens"
+			]
+		}
+	},
+	"onCreateCommand": "/onCreate.sh"
+}
