@@ -2,8 +2,7 @@
 set -e
 STACKSIZE=40m
 HEAPSIZE=20m
-# add clm to PATH
-#export PATH="$PATH:/usr/local/clean/bin/"
+# add clm to PATH: done in docker container in /etc/bash.bashrc 
 script_dir=$(dirname $0)
 
 projects=( "HelloWorld" )
