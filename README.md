@@ -10,6 +10,7 @@ However you offcourse can use this project on your local machine by installing C
 * build project with `clm` using the command:  ./build.bash
 * clean project with bash script using the command:  ./clean.bash
 
+There is also a similar repository where we build the same HelloWorld Clean code using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git .
 
 ## Devcontainer 
 
