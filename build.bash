@@ -6,7 +6,9 @@ HEAPSIZE=20m
 #export PATH="$PATH:/usr/local/clean/bin/"
 script_dir=$(dirname $0)
 
-projects="HelloWorld"
+projects=( "HelloWorld" )
+# libs=(StdEnv ArgEnv) # StdEnv is by default already included by clm
+libs=( ArgEnv )
 
 
 build_script() {
@@ -15,17 +17,25 @@ build_script() {
   prj_name="$2"
   line="------------------------------------------------------------------"
   
+  libargs=()
+  for lib in "${libs[@]}"
+  do
+    libargs+=( "-IL" "$lib" )
+  done 
+
+  cmd=( clm -nr -nt -h $HEAPSIZE -s $STACKSIZE -I "$prj_dir/src/" "${libargs[@]}"  "$prj_name" -o "$prj_dir/bin/$prj_name" ) 
+
   mkdir -p "$prj_dir/bin/"
   printf "\n$line\n    $prj_name\n$line\n - project name: $prj_name\n - project dir: $prj_dir\n - command to be builded : $prj_dir/bin/$prj_name\n\n"
-  echo clm -nr -nt -h $HEAPSIZE -s $STACKSIZE -I "$prj_dir/src/" -IL ArgEnv  "$prj_name" -o "$prj_dir/bin/$prj_name"
-  clm -nr -nt -h $HEAPSIZE -s $STACKSIZE -I "$prj_dir/src/" -IL ArgEnv  "$prj_name" -o "$prj_dir/bin/$prj_name"
-  printf "\nThe builded command can be found in : $prj_dir/bin/$prj_name\n\n"
+  echo "running:" "${cmd[@]}"
+  "${cmd[@]}"
+   printf "\nThe builded command can be found in : $prj_dir/bin/$prj_name\n\n"
 }
 
 # cleanup old build(s) 
 echo bash $script_dir/clean.bash
 bash $script_dir/clean.bash
 # build project(s)
-for prj_name in $projects; do
+for prj_name in  "${projects[@]}"; do
   build_script "$script_dir" "$prj_name" 
 done

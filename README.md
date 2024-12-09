@@ -1,31 +1,29 @@
-# Classic Clean 
+# HelloWorld Clean console application build using `clm`  
 
-This is a Clean template project which contains an environment to develop a Clean applications using docker develop containers.
-This template uses a classic clean distribution from https://clean.cs.ru.nl/ and
-builds projects with the `clm` tool using a `build.bash` script.
+This is a Clean example project that uses a clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
+The project includes a simple “Hello, World!” console application, but it can also serve as a template for building other projects.
 
-Note that the devcontainer uses nitrile to install the Eastwood language server, 
-but for developing applications only the classic clean and its libraries are used.
-The Eastwood language server works all Clean projects, that is both nitrile or
-classic clean projects.
-For compiling the project the `clm` commandline tool is used. If you 
-have a project file you can also compile your project with the `cpm` commandline
-tool. 
+## Devcontainer 
 
-Note that the devcontainer is only build for the `x64` architecture, but will
-also fine on Mac and Windows machines using the `ARM64` architeture because
-Docker desktop has support for QEMU emulation for `ARM64`. 
+The project provides a ready-to-use environment for developing Clean applications using Docker development container via a devcontainer.
+
+The development container (devcontainer) uses Nitrile to install the Eastwood language server. However, for developing applications, only the Clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and its associated libraries are used.
+
+The Eastwood language server is compatible with all Clean projects, regardless of whether Clean was installed via Nitrile or directly from the Clean website https://clean.cs.ru.nl/. For compiling the project, the `clm` command-line tool is used. If your project includes a project file, you can also compile it using the cpm command-line tool.
+
+Please note that the devcontainer is built specifically for the `x64` architecture. Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
+
 
 ## Build without Docker for different platforms
 
-For Linux x86, Windows x64 and Macos x64 you can compile the x64 binary with the
+For Linux `x86`, Windows `x64` and Macos `x64` you can compile the `x64` binary with the
 clean compiler for that platform.  
 
-Clean only has a compiler for the ARM64 architecture for the linux platform.
-For linux ARM64 you can compile a native binary using ARM64 Clean compiler for linux. 
-If your project compiles a static binary then the binary compiled on a X64 MAC
-also runs fine on a ARM64 Mac using Rosetta emulation for x64, and the binary compile
-on a X64 Windows runs fine on a Windows ARM64 using x64 emulation. 
+Clean only has a compiler for the `ARM64` architecture for the linux platform.
+For linux `ARM64` you can compile a native binary using `ARM64` Clean compiler for linux. 
+If your project compiles a static binary then the binary compiled on a `x64` Mac
+also runs fine on a `ARM64` Mac using Rosetta emulation for `x64`, and the binary compile
+on a `x64` Windows runs fine on a Windows `ARM64` using `x64` emulation. 
 
 ## VSCode Development Environment Installation Guide
 
@@ -53,11 +51,11 @@ The installation guide is based on [the official documentation](https://code.vis
 
 4. Clone the project using
 
-   `git clone https://github.com/harcokuppens/classic-clean.git` 
+   `git clone https://github.com/harcokuppens/clean-clm-helloworld.git` 
 
    or the SSH equivalent
 
-   `git clone git@github.com:harcokuppens/classic-clean.git`
+   `git clone git@github.com:harcokuppens/clean-clm-helloworld.git`
 
    Afterwards, open the root directory of the repository in VSCode using the command
 
@@ -65,9 +63,9 @@ The installation guide is based on [the official documentation](https://code.vis
 
 5. A message should pop up offering to open the repository within a development container, do so.
 
-6. Open the root folder of the classic-clean repository within a devcontainer terminal if it is not already open, using the command:
+6. Open the root folder of the clean-clm-helloworld repository within a devcontainer terminal if it is not already open, using the command:
 
-   `cd classic-clean`
+   `cd clean-clm-helloworld`
 
 7. After the development container is built,
    verify that everything is working by opening a terminal within VSCode and running:
@@ -116,21 +114,21 @@ under the home (`~`) directory.
 
 4. Clone the project by performing the following command:
 
-   `git clone https://github.com/harcokuppens/classic-clean.git` 
+   `git clone https://github.com/harcokuppens/clean-clm-helloworld.git` 
 
    or the SSH equivalent
 
-   `git clone git@github.com:harcokuppens/classic-clean.git`
+   `git clone git@github.com:harcokuppens/clean-clm-helloworld.git`
 
    in the wsl terminal.
 
-5. Run `code classic-clean` in the linux terminal to open the repository in VSCode.
+5. Run `code clean-clm-helloworld` in the linux terminal to open the repository in VSCode.
 
 6. A message should pop up offering to open the repository within a development container, do so.
 
-6. Open the root folder of the classic-clean repository within a devcontainer terminal if it is not already open, using the command:
+6. Open the root folder of the clean-clm-helloworld repository within a devcontainer terminal if it is not already open, using the command:
 
-   `cd classic-clean`
+   `cd clean-clm-helloworld`
 
 8. After the development container is built,
    verify that everything is working by opening a terminal within VSCode and running:
