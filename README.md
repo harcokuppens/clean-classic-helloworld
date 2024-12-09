@@ -3,6 +3,14 @@
 This is a Clean example project that uses a clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
 The project includes a simple “Hello, World!” console application, but it can also serve as a template for building other projects.
 
+This project can be used using a devcontainer which automatically setups a development environment with a clean installation from https://clean.cs.ru.nl/ for you in a docker container from which you can directly start developing. (see section below)
+
+However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
+* install Clean from https://clean.cs.ru.nl/ .
+* build project with `clm` using the command:  ./build.bash
+* clean project with bash script using the command:  ./clean.bash
+
+
 ## Devcontainer 
 
 The project provides a ready-to-use environment for developing Clean applications using Docker development container via a devcontainer.
