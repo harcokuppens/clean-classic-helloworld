@@ -8,7 +8,7 @@ This project can be used using a devcontainer which automatically setups a devel
 However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
 * install Clean from https://clean.cs.ru.nl/ .
 * build project with `clm` using the command:  ./build.bash
-* clean project with bash script using the command:  ./clean.bash
+* clean project with bash script using the command:  ./cleanup.bash
 
 There is also a similar repository where we build the same HelloWorld Clean code using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git .
 
