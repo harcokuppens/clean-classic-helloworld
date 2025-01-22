@@ -43,7 +43,7 @@ if [[ "$1" == "all" ]]; then
 
     echo ""
     echo "Also remove the clean/ distribution installed in the project's folder."
-    echo "To recreate the clean/ folder in your workspace folder in the container run in the container: /onCreate.sh "
+    echo "To recreate the clean/ folder in your workspace folder in the container run in the container: ./install-clean-clm.bash"
 else
     echo "NOTE: to also cleanup the clean installation in the project run: ./cleanup.bash all"
 fi
