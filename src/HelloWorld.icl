@@ -1,29 +1,42 @@
-module HelloWorld;
+module HelloWorld
 
-import StdEnv,ArgEnv;
+import StdEnv
+import ArgEnv
 
-import StdMisc,StdFile;
-import CustomEvalAbort;
-import CustomFileConsole;
+import StdMisc,StdFile
+import CustomEvalAbort
+import CustomFile
 
-write_usage file
-    # file = file <<<
-"usage: HelloWorld  NAME"  <<<
-"\n";
-    = file;
+import CustomDebug
 
-Start :: !*World  -> *World;
+
+usage_msg ::  {#Char}
+usage_msg = "usage: HelloWorld  NAME"
+
+
+Start :: !*World  -> *World
 Start w
     // get commandline arguments
-    # argv = getCommandLine;
-    // print usage message if no single argument given
+    # argv = getCommandLine
+    // print usage message to stderr if no argument given
     | size argv  <> 2
-        # stderr = write_usage stderr;
-        = abort "" <--- stderr;
+        =  errorAbort usage_msg // does 'error abort' with exit code and print usage message to stderr
+        // =  abort usage_msg  // does 'abort' with exit code and print usage message to stdout
 
     // cmdline arguments handling
-    # name = argv.[1];
-    # stderr = stderr <<< "Hello " <<<  name <<< "\n";
-    // we must close stderr to get it printed
-    # w = file_close  stderr  w;
-    = w;
+    # name = argv.[1]                                                  // trace expressions;  prefer using ->> operator because it outputs to stderr, but it does not always works, then you can use  ->>- operator which outputs to stdout
+    // open console
+    # (console,w) = stdio w                                            ->> ("DEBUG:1: name",name)  // last part is trace expression added to the line with the ->> operator which outputs to stderr
+    //                                                                                             // print name to stderr here because name is not yet defined on the previous line
+    // print hello message to console
+    # console = console <<< "Hello " <<< name <<< "\n"                 ->>- ("DEBUG:2: argv",argv) // last part is trace expression added to the line with the ->>- operator which outputs to stdout  (note: ->> does not work with argv)
+
+    // we must close console to get it printed (otherwise compiler think console is not used and optimizes all program code with it away)
+    # w = file_close  console  w
+    // we must close stderr to get it printed (otherwise compiler think stderr is not used and optimizes all program code with it away)
+    # w = file_close  stderr  w
+
+    = w // return world
+
+
+

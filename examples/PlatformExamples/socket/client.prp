@@ -1,0 +1,6 @@
+Version: 1.5
+MainModule
+	Name:	client
+	Dir:	{Project}
+	DclOpen:	False
+	IclOpen:	True

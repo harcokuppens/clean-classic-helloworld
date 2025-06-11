@@ -1,0 +1,19 @@
+
+All original modules are provided under the same license as the Clean System,
+the Simplified BSD License (2-clause BSD License, see [LICENCE.Clean](LICENSE.Clean)).
+
+Some modules were ported from Haskell and they are provided the compatible
+Haskell's 3-clause BSD license (see [LICENSE.BSD3](LICENCE.BSD3)).
+
+- Control.Arrow
+- Control.Category
+- Data.Foldable
+- Data.Heap
+- Data.Map
+- Data.Traversable
+- Data.Tree
+- Data.IntSet.Base
+- Text.URI
+- Data.Integer (interface only)
+- Text.Unicode.Encodings.UTF8
+- System.GetOpt

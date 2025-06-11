@@ -1,6 +1,6 @@
 definition module CustomEvalAbort;
 
-//errorAbort :: {#Char} -> {#Char};
+//_errorAbort :: {#Char} -> {#Char};
 errorAbort :: {#Char} -> .a;
 
 // force evaluation of x using helper which is evaluated later

@@ -1,0 +1,6 @@
+Version: 1.5
+MainModule
+	Name:	SQLDbDemo
+	Dir:	{Project}
+	DclOpen:	False
+	IclOpen:	True

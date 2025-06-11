@@ -1,0 +1,6 @@
+Version: 1.5
+MainModule
+	Name:	WebDemo
+	Dir:	{Project}
+	DclOpen:	False
+	IclOpen:	True
