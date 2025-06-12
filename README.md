@@ -1,6 +1,6 @@
-# HelloWorld Clean console application build using `clm`  
+# HelloWorld Clean console application build using  the 'classic' Clean distribution
 
-This is a Clean example project that uses a 'classic' clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
+This is a Clean example project that uses a 'classic' Clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
 The project includes a simple “Hello, World!” console application, but it can also serve as a template for building other projects.
 
 This project can be used using a devcontainer which automatically setups a development environment with a 'classic' clean installation from https://clean.cs.ru.nl/ for you in a docker container from which you can directly start developing. For installation instructions see the
@@ -13,6 +13,9 @@ However you offcourse can use this project on your local machine by installing C
 * cleanup project with bash script using the command:  ./cleanup.bash
 * cleanup both project and clean installation in project: ./cleanup.bash all
 * reinstall clean in project: ./install-clean-clm.bash 
+
+If you add a  a project file ( `.prj` ) to this project, which is used by the Clean IDE,
+you can also can compile this project with the `cpm` commandline tool instead of using `clm`. 
 
 There is also a similar repository where we build the same HelloWorld Clean code using a Clean installation using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool  installs the  Clean runtime and its libraries as versioned packages, and also manages the  build of the project. 
 
@@ -52,7 +55,10 @@ Note that  the Clean compiler and its libraries  are installed  using a 'classic
 In the examples subfolder are some examples from the classic Clean distribution which
 can also be tried out instead of `HelloWorld.icl`. You need to copy the `.icl` file
 from the examples folder to the `src` folder, and adapt the `projects` variable in the
-`build.bash` file. 
+`build.bash` file.  
+
+The examples also come with a project file ( `.prj` ) which is used by the Clean IDE. 
+However using the `cpm` command-line tool you can also can compile these projects instead of using `clm`. 
 
 ## Clean documentation
 
