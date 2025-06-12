@@ -92,8 +92,18 @@ Please note that the devcontainer is built specifically for the `x64` architectu
 
 ### Platforms the Clean compiler supports
 
-For Linux `x86`, Windows `x64` and Macos `x64` you can compile the `x64` binary with the
+On all platforms you can run Clean within the vscode devcontainer which runs `X64` Clean on linux. However you can also install Clean locally on your system and use it directly there. 
+
+We advice to use this devcontainer  because then you can also use all the features of the  Eastwood language server in vscode.
+
+Per architecture we specify which operating systems support Clean:
+
+#### X64 
+
+For Linux `x64`, Windows `x64` and Macos `x64` you can compile the `x64` binary with the
 clean compiler for that platform.  
+
+#### ARM 
 
 Clean only has a compiler for the `ARM64` architecture for the linux platform.
 For linux `ARM64` you can compile a native binary using `ARM64` Clean compiler for linux. 
