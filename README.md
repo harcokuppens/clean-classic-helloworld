@@ -1,9 +1,11 @@
 # HelloWorld Clean console application build using `clm`  
 
-This is a Clean example project that uses a clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
+This is a Clean example project that uses a 'classic' clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and compiles projects with the `clm` tool, managed through the build.bash script.
 The project includes a simple “Hello, World!” console application, but it can also serve as a template for building other projects.
 
-This project can be used using a devcontainer which automatically setups a development environment with a clean installation from https://clean.cs.ru.nl/ for you in a docker container from which you can directly start developing. (see section below)
+This project can be used using a devcontainer which automatically setups a development environment with a 'classic' clean installation from https://clean.cs.ru.nl/ for you in a docker container from which you can directly start developing. For installation instructions see the
+[VSCode Development Environment Installation Guide](./DevContainer.md) Please note that the devcontainer is built specifically for the `x64` architecture. Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
+
 
 However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
 * install Clean from https://clean.cs.ru.nl/ .
@@ -12,20 +14,83 @@ However you offcourse can use this project on your local machine by installing C
 * cleanup both project and clean installation in project: ./cleanup.bash all
 * reinstall clean in project: ./install-clean-clm.bash 
 
-There is also a similar repository where we build the same HelloWorld Clean code using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git .
+There is also a similar repository where we build the same HelloWorld Clean code using a Clean installation using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool  installs the  Clean runtime and its libraries as versioned packages, and also manages the  build of the project. 
 
-## Devcontainer 
+
+## HelloWorld program
+
+The HelloWorld program asks for you name and prints 'Hello NAME'. In the example we
+also added some debug trace expressions to show how you can debug your programs with
+tracing. For details about debugging see the document
+[Debugging in Clean](./Debugging.md). To demonstrate tracing in more detail we also
+include the alternative Clean program `HelloWorldDebug.icl`.
+
+The Helloworld project uses some libraries of the
+many of the standard libraries coming with the classic Clean distribution in the `clean/` folder. 
+You do not need to install any packages/dependencies to build the project, because all libraries
+are in  the `clean/lib/` folder. As developer you can easily browse and inspect the libraries 
+there within your project folder.
+
+## Build project with clm
+
+`Clm` is the commandline build tool for Clean projects without needing a Clean project file used by the Clean IDE.
+
+To simplify building and cleaning up the project we use some bash helpers scripts written around `clm`.
+ To build the
+`HelloWorld` project you have to run the following Nitrile commands:
+
+    ./build.bash               # builds the Clean project. Configure the build using the 
+                               # variables $projects, $libs and $srcDirs in this script.
+    ./cleanup.bash             # cleans up the project build 
+    ./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
+    ./install-clean-clm.bash   # (re)installs the  Clean installation in the `clean/` folder
+
+Note that  the Clean compiler and its libraries  are installed  using a 'classic' clean distribution from the Clean programming language website https://clean.cs.ru.nl/ into the project`s `clean/` subfolder. 
+
+## Other examples
+
+In the examples subfolder are some examples from the classic Clean distribution which
+can also be tried out instead of `HelloWorld.icl`. You need to copy the `.icl` file
+from the examples folder to the `src` folder, and adapt the `projects` variable in the
+`build.bash` file. 
+
+## Clean documentation
+
+- For an introduction to functional programming in Clean read the book
+  [Functional Programming in Clean](doc/2002_Functional_Programming_in_Clean.pdf)
+- The ideas behind Clean and its implementation on sequential and parallel machine
+  architectures are explained in detail in the following textbook:
+  [Functional Programming and Parallel Graph Rewriting](doc/1993_Functional_Programming_and_Parallel_Graph_Rewriting.pdf)
+- A description of the syntax and semantics of Clean can be found in the
+  [Clean Language Report](doc/2021_CleanLanguageReport_Version3.0.pdf). The latest
+  version can be found online at https://cloogle.org/doc/ .
+- [Clean for Haskell programmers](2024_Clean_for_Haskell_Programmers.pdf)
+- [A Concise Guide to Clean StdEnv (standard library)](doc/2018_ConciseGuideToClean3xStdEnv.pdf)
+- Website with [Guides and hints to work with the Clean](https://top-software.gitlab.io/clean-lang/) \
+This website contains a collection of guides and hints to work with the Clean
+programming language.
+
+## Installation details
+
+### The Eastwood language server for vscode
 
 The project provides a ready-to-use environment for developing Clean applications using Docker development container via a devcontainer.
 
 The development container (devcontainer) uses Nitrile to install the Eastwood language server. However, for developing applications, only the Clean distribution from the Clean programming language website https://clean.cs.ru.nl/ and its associated libraries are used.
 
-The Eastwood language server is compatible with all Clean projects, regardless of whether Clean was installed via Nitrile or directly from the Clean website https://clean.cs.ru.nl/. For compiling the project, the `clm` command-line tool is used. If your project includes a project file, you can also compile it using the cpm command-line tool.
+The Eastwood language server is compatible with all Clean projects, regardless of whether Clean was installed via Nitrile or directly from the Clean website https://clean.cs.ru.nl/. For compiling the project, the `clm` command-line tool is used. If your project includes a project file, you can also compile it using the `cpm` command-line tool. The Eastwood language server provides 
+* autocomplete,                               
+* error-checking (diagnostics),  linting             
+* jump-to-definition or declaration
+             
+
+The HelloWorld project comes with an already configure `Eastwood.yml` configuration file, which specifies all libraries in the
+clean distribution in `clean/lib/` so they are available in the Eastwood language server in vscode. 
 
 Please note that the devcontainer is built specifically for the `x64` architecture. Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
 
 
-## Build without Docker for different platforms
+### Platforms the Clean compiler supports
 
 For Linux `x86`, Windows `x64` and Macos `x64` you can compile the `x64` binary with the
 clean compiler for that platform.  
@@ -33,126 +98,14 @@ clean compiler for that platform.
 Clean only has a compiler for the `ARM64` architecture for the linux platform.
 For linux `ARM64` you can compile a native binary using `ARM64` Clean compiler for linux. 
 If your project compiles a static binary then the binary compiled on a `x64` Mac
-also runs fine on a `ARM64` Mac using Rosetta emulation for `x64`, and the binary compile
+also runs fine on a `ARM64` Mac using Rosetta emulation for `x64`, and the binary compiled
 on a `x64` Windows runs fine on a Windows `ARM64` using `x64` emulation. 
 
-## VSCode Development Environment Installation Guide
-
-This project is meant to be used through a development environment which can be setup using Docker.
-
-The development environment allows to develop Clean applications on Linux, macOS or Windows.
-
-The installation guide is based on [the official documentation](https://code.visualstudio.com/docs/remote/containers).
-
-### Prerequisites
-
-- Windows: Docker Desktop 2.0+ on Windows 10 Pro/Enterprise. Windows 10 Home (2004+) requires Docker Desktop 2.3+ and the WSL 2 back-end. (Docker Toolbox is not supported. Windows container images are not supported.)
-- macOS: Docker Desktop 2.0+.
-- Linux: Docker CE/EE 18.06+ and Docker Compose 1.21+. (The Ubuntu snap package is not supported.)
-
-### Linux/macOS
-
-1. Install docker through your package manager or by other means.
-   Note that the Ubuntu snap package is not supported. For macOS, tick the "Enable VirtioFS accelerating directory sharing" checkbox under Preferences > Experimental features.
-
-2. Install VSCode if this has not already been done, either through your package manager or by other means.
-   Note that using FOSS variants of VSCode (E.g: VSCodium) does not currently work.
-
-3. Install the `Dev Containers` and `Docker` `VSCode` extensions, both are offered by Microsoft.
-
-4. Clone the project using
-
-   `git clone https://github.com/harcokuppens/clean-clm-helloworld.git` 
-
-   or the SSH equivalent
-
-   `git clone git@github.com:harcokuppens/clean-clm-helloworld.git`
-
-   Afterwards, open the root directory of the repository in VSCode using the command
-
-   `code PATH_TO_ROOT_OF_CLONED_REPOSITORY`
-
-5. A message should pop up offering to open the repository within a development container, do so.
-
-6. Open the root folder of the clean-clm-helloworld repository within a devcontainer terminal if it is not already open, using the command:
-
-   `cd clean-clm-helloworld`
-
-7. After the development container is built,
-   verify that everything is working by opening a terminal within VSCode and running:
-
-	`./build.bash`
-
-8. Afterwards, the example executable can be run by running `./bin/HelloWorld` within the terminal.
-
-9. If anything does not work as expected, it is recommended to rebuild the container, click the "Dev container" button in the bottom left of VSCode and select "Rebuild container".
-
-10. It is recommended to turn on the autosave feature for VSCode if it is not enabled already.
-
-    Ticking `File -> Autosave` in the VSCode menu enables the feature.
-
-### Windows
-
-#### Prerequisites
-It is necessary to enable virtualization and data execution prevention in the BIOS of your computer.
-
-Docker will provide errors notifying you that this should be done in case these features are not enabled already.
-
-#### Installing WSL
-
-1. Open Start
-2. Windows Search (Windows key + Q) for "Turn Windows features on or off" and click the search result.
-3. Check the “Windows Subsystem for Linux” option that is listed within the program
-   that opens after clicking the search result, if it is already enabled, do nothing.
-4. Afterwards, open powershell and perform the following command:
-
-   `wsl --install -d ubuntu`
-
-#### Installing docker
-
-1. [Download Docker Desktop for Windows](https://www.docker.com/products/docker-desktop) and go through the installation procedure.
-
-2. Enable WSL integration in the settings of Docker Desktop under the general tab if it is not enabled.
-
-#### Configuring VSCode
-
-1. Install VSCode if this has not already been done, make sure you are using the latest version of VSCode.
-
-2. Install the `Dev Containers` and `WSL` VSCode extensions, both are offered by Microsoft.
-
-3. Open a powershell terminal and perform the `wsl` command, now a linux terminal will open. Afterwards, you can `cd ~` or change the directory to wherever you want to clone the project in. It is very important that this directory is located
-under the home (`~`) directory.
-
-4. Clone the project by performing the following command:
-
-   `git clone https://github.com/harcokuppens/clean-clm-helloworld.git` 
-
-   or the SSH equivalent
-
-   `git clone git@github.com:harcokuppens/clean-clm-helloworld.git`
-
-   in the wsl terminal.
-
-5. Run `code clean-clm-helloworld` in the linux terminal to open the repository in VSCode.
-
-6. A message should pop up offering to open the repository within a development container, do so.
-
-6. Open the root folder of the clean-clm-helloworld repository within a devcontainer terminal if it is not already open, using the command:
-
-   `cd clean-clm-helloworld`
-
-8. After the development container is built,
-   verify that everything is working by opening a terminal within VSCode and running:
-
-   `./build.bash`
-
-9. Afterwards, the example executable can be ran by executing `./bin/HelloWorld` within the VSCode terminal.
-
-10. If anything does not work as expected, it is recommended to rebuild the container, click the "Dev container" button in the bottom left of VSCode and select "Rebuild container".
-
-11. It is recommended to turn on the autosave feature for VSCode if it is not enabled already.
-
-    Ticking `File -> Autosave` in the VSCode menu enables the feature.
+On  a `ARM64` Mac using Rosetta emulation for `x64` you can install the Clean compiler for `x64` Macs,
+and then compile Clean programs for `x64` which then also run on that Mac using Rosetta emulation for `x64`.
+However you need to patch the 'classic' Clean installation for `x64` Macs to get the installation working
+correctly on a `ARM64` Mac. In the folder [`arm-mac/`](arm-mac/) we provide the installation instructions for installing the Clean 
+compiler for a `x64` Mac on a `ARM64` Mac.
 
 ## License
 The project is licensed under the BSD-2-Clause license.
