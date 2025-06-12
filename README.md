@@ -18,7 +18,10 @@ However you offcourse can use this project on your local machine by installing C
 
 We advice to use the vscode devcontainer because then you can also use all the features of the  Eastwood language server in vscode, and you can run it on all platforms. 
 
-On Windows x64 you can also use the Clean IDE  using the project file ( `HelloWorld.prj` ). Using the  project file ( `HelloWorld.prj` ) you can also can compile this project with the `cpm` commandline tool instead of using `clm`. However we advice to use `clm` builds for all other platforms because project files are difficult to edit by hand, and mainly are edited via the Clean IDE.
+On Windows x64 you can also use the Clean IDE  using the project file ( `HelloWorld.prj` ). When using the Clean IDE you do not need the `clean/`
+subfolder in your project because the  Clean IDE comes with its own Clean installation.
+
+Instead of using `clm` you can also can compile this project with the `cpm` commandline tool using the  project file ( `HelloWorld.prj` ) . However we advice to use `clm` builds for all other platforms because project files are difficult to edit by hand, and mainly edited via the Clean IDE.
 
 
 There is also a similar repository where we build the same HelloWorld Clean code using a Clean installation using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool  installs the  Clean runtime and its libraries as versioned packages, and also manages the  build of the project. 
