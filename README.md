@@ -9,10 +9,11 @@ This project can be used using a devcontainer which automatically setups a devel
 
 However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
 * install Clean from https://clean.cs.ru.nl/ .
-* build project with `clm` using the command:  ./build.bash
-* cleanup project with bash script using the command:  ./cleanup.bash
-* cleanup both project and clean installation in project: ./cleanup.bash all
-* reinstall clean in project: ./install-clean-clm.bash 
+* build project with `clm` using the command:  `./build.bash`
+* cleanup project with bash script using the command: ` ./cleanup.bash`
+* cleanup both project and clean installation in project: `./cleanup.bash all`
+* reinstall clean in project: `./install-clean-clm.bash` \
+  By default this installs Clean for X64 Linux, for [other platforms](#platforms-the-clean-compiler-supports) you must the download url in the script.
 
 If you add a  a project file ( `.prj` ) to this project, which is used by the Clean IDE,
 you can also can compile this project with the `cpm` commandline tool instead of using `clm`. 
@@ -40,13 +41,13 @@ there within your project folder.
 
 To simplify building and cleaning up the project we use some bash helpers scripts written around `clm`.
  To build the
-`HelloWorld` project you have to run the following Nitrile commands:
+`HelloWorld` project you have to run the following commands:
 
     ./build.bash               # builds the Clean project. Configure the build using the 
                                # variables $projects, $libs and $srcDirs in this script.
     ./cleanup.bash             # cleans up the project build 
     ./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
-    ./install-clean-clm.bash   # (re)installs the  Clean installation in the `clean/` folder
+    ./install-clean-clm.bash   # (re)installs the Clean installation for x64 Linux in the `clean/` folder
 
 Note that  the Clean compiler and its libraries  are installed  using a 'classic' clean distribution from the Clean programming language website https://clean.cs.ru.nl/ into the project`s `clean/` subfolder. 
 
