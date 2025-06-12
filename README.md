@@ -8,15 +8,18 @@ This project can be used using a devcontainer which automatically setups a devel
 
 
 However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
+
 * install Clean from https://clean.cs.ru.nl/ .
 * build project with `clm` using the command:  `./build.bash`
 * cleanup project with bash script using the command: ` ./cleanup.bash`
 * cleanup both project and clean installation in project: `./cleanup.bash all`
 * reinstall clean in project: `./install-clean-clm.bash` \
-  By default this installs Clean for X64 Linux, for [other platforms](#platforms-the-clean-compiler-supports) you must the download url in the script.
+  By default this installs Clean for X64 Linux, for [other platforms](#platforms-the-clean-compiler-supports) you must edit the download url in the script. Note that not all platform/architecture combinations are supported.
 
-If you add a  a project file ( `.prj` ) to this project, which is used by the Clean IDE,
-you can also can compile this project with the `cpm` commandline tool instead of using `clm`. 
+We advice to use the vscode devcontainer because then you can also use all the features of the  Eastwood language server in vscode, and you can run it on all platforms. 
+
+On Windows x64 you can also use the Clean IDE  using the project file ( `HelloWorld.prj` ). Using the  project file ( `HelloWorld.prj` ) you can also can compile this project with the `cpm` commandline tool instead of using `clm`. However we advice to use `clm` builds for all other platforms because project files are difficult to edit by hand, and mainly are edited via the Clean IDE.
+
 
 There is also a similar repository where we build the same HelloWorld Clean code using a Clean installation using the nitrile tool at: https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool  installs the  Clean runtime and its libraries as versioned packages, and also manages the  build of the project. 
 
@@ -94,14 +97,14 @@ The Eastwood language server is compatible with all Clean projects, regardless o
 The HelloWorld project comes with an already configure `Eastwood.yml` configuration file, which specifies all libraries in the
 clean distribution in `clean/lib/` so they are available in the Eastwood language server in vscode. 
 
-Please note that the devcontainer is built specifically for the `x64` architecture. Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
+Please note that the devcontainer is build specifically for the `x64` architecture. Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
 
 
 ### Platforms the Clean compiler supports
 
 On all platforms you can run Clean within the vscode devcontainer which runs `X64` Clean on linux. However you can also install Clean locally on your system and use it directly there. 
 
-We advice to use this devcontainer  because then you can also use all the features of the  Eastwood language server in vscode.
+We advice to use the vscode devcontainer because then you can also use all the features of the  Eastwood language server in vscode.
 
 Per architecture we specify which operating systems support Clean:
 
