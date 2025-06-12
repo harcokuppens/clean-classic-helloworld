@@ -114,9 +114,10 @@ clean compiler for that platform.
 
 Clean only has a compiler for the `ARM64` architecture for the linux platform.
 For linux `ARM64` you can compile a native binary using `ARM64` Clean compiler for linux. 
-If your project compiles a static binary then the binary compiled on a `x64` Mac
-also runs fine on a `ARM64` Mac using Rosetta emulation for `x64`, and the binary compiled
-on a `x64` Windows runs fine on a Windows `ARM64` using `x64` emulation. 
+
+However `x64` clean builds can be run on none-supported `ARM64` platforms using emulation. If your project compiles a static binary then
+* the binary compiled on a `x64` Mac also runs fine on a `ARM64` Mac using Rosetta emulation for `x64`, and 
+* the binary compiled on a `x64` Windows also runs fine on a Windows `ARM64` using `x64` emulation. 
 
 On  a `ARM64` Mac using Rosetta emulation for `x64` you can install the Clean compiler for `x64` Macs,
 and then compile Clean programs for `x64` which then also run on that Mac using Rosetta emulation for `x64`.
