@@ -10,6 +10,7 @@ This project can be used using a devcontainer which automatically setups a devel
 However you offcourse can use this project on your local machine by installing Clean from https://clean.cs.ru.nl/ yourself.
 
 * install Clean from https://clean.cs.ru.nl/ .
+* add path where `clm` is located to PATH environment variable in your bash shell 
 * build project with `clm` using the command:  `./build.bash`
 * cleanup project with bash script using the command: ` ./cleanup.bash`
 * cleanup both project and clean installation in project: `./cleanup.bash all`
