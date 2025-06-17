@@ -33,9 +33,14 @@ fi
 echo "Remove builds from the local source files in the project."
 script_dir=$(dirname $0)
 script_dir=${script_dir:?} # aborts with error if script_dir not set
-rm -rf "$script_dir/bin"
+
+# cleanup bin/ folder. Make sure an empty bin/ remains, because cpm needs the bin/ folder to exist to write binary in it.
+rm -rf "$script_dir/bin" ; mkdir "$script_dir/bin"
 # cleanup builds in src folders in "Clean System Files" folders
 find "$script_dir/src" -name 'Clean System Files' -type d -print0 | xargs -0 -I % rm -rf "%"
+
+# also cleanup 'Clean System Files' folder in root folder created when using cpm
+rm -rf "$script_dir/Clean System Files"
 
 if [[ "$1" == "all" ]]; then
     # also cleanup clean folder
