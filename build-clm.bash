@@ -41,7 +41,12 @@ clean_compiler="-clc cocl"         # standard compiler (default)
 
 # add clm to PATH: done in docker container in /etc/bash.bashrc 
 script_dir=$(dirname $0)
-
+if [[ -d "$script_dir/clean" ]]
+then 
+   export CLEAN_HOME="$script_dir/clean"
+   export PATH="$CLEAN_HOME/bin:$PATH"   
+fi
+echo "Using Clean in $CLEAN_HOME"
 
 # some options we want to enable in development mode but disabled in production mode
 if [[ "$MODE" == "development" ]]; then
