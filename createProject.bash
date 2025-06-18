@@ -2,7 +2,7 @@
 
 # --- Global Variables ---
 ENVIRONMENT="StdEnv"  # Default environment
-declare -a SOURCE_FOLDERS=("./src") # Default source folder
+declare -a SOURCE_FOLDERS=("src") # Default source folder
 declare -a LIB_FOLDERS=()          # Initialize as empty, will be populated by -l
 
 PROJECT_NAME=""    # To store the project name argument
