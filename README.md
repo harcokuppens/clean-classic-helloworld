@@ -380,24 +380,4 @@ Note:
 
 The project is licensed under the BSD-2-Clause license.
 
-# old
 
-./install-clean-clm.bash # (re)installs the Clean installation for x64 Linux in the
-`clean/` folder
-
-On Windows x64 you can also use the Clean IDE using the project file (
-`HelloWorld.prj` ). When using the Clean IDE you do not need the `clean/` subfolder
-in your project because the Clean IDE comes with its own Clean installation.
-
-Instead of using `clm` you can also can compile this project with the `cpm`
-commandline tool using the project file ( `HelloWorld.prj` ) . However we advice to
-use `clm` builds for all other platforms because project files are difficult to edit
-by hand, and mainly edited via the Clean IDE.
-
-- build project with `clm` using the command: `./build.bash`
-- cleanup project with bash script using the command: ` ./cleanup.bash`
-- cleanup both project and clean installation in project: `./cleanup.bash all`
-- reinstall clean in project: `./install-clean-clm.bash` \
-  By default this installs Clean for X64 Linux, for [other platforms](#platforms-the-clean-compiler-supports)
-  you must edit the download url in the script. Note that not all platform/architecture
-  combinations are supported.
