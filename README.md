@@ -16,6 +16,29 @@ https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool
 installs the Clean runtime and its libraries as versioned packages, and also manages
 the build of the project.
 
+**Table of Contents**
+
+<!--ts-->
+<!-- prettier-ignore -->
+   * [HelloWorld program](#helloworld-program)
+   * [Project file](#project-file)
+   * [Try out more examples](#try-out-more-examples)
+   * [Clean documentation](#clean-documentation)
+   * [Setup Development environment](#setup-development-environment)
+      * [Easy develop in DevContainer](#easy-develop-in-devcontainer)
+      * [Develop on local machine](#develop-on-local-machine)
+   * [Build project without project file using clm](#build-project-without-project-file-using-clm)
+   * [Installation details](#installation-details)
+      * [Clean installation](#clean-installation)
+      * [The Eastwood language server for vscode](#the-eastwood-language-server-for-vscode)
+         * [use the Eastwood language server for vscode locally on x64 based Windows or Linux](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
+      * [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports)
+         * [X64](#x64)
+         * [ARM](#arm)
+      * [The createProject.bash command](#the-createprojectbash-command)
+   * [License](#license)
+<!--te-->
+
 ## HelloWorld program
 
 The HelloWorld program asks for you name and prints 'Hello NAME'. In the example we
@@ -25,7 +48,7 @@ tracing. For details about debugging see the document
 include the alternative Clean program `HelloWorldDebug.icl`.
 
 The source of the Helloworld project is located in the `src/` folder, and it uses
-libraries of the the classic Clean distribution installed in the project's `clean/`
+libraries of the 'classic' Clean distribution installed in the project's `clean/`
 subfolder. You do not need to install any packages/dependencies to build the project,
 because all libraries are in the `clean/lib/` folder. As developer you can easily
 browse and inspect the libraries there within your project folder.
@@ -199,7 +222,8 @@ folder sharing the `src/` and `clean/` folders.
 This project can be used using a devcontainer which automatically setups a
 development environment with a 'classic' clean installation from
 https://clean.cs.ru.nl/ for you in a docker container from which you can directly
-start developing. For installation instructions see the
+start developing with vscode with nice Clean language support. For installation
+instructions see the
 [VSCode Development Environment Installation Guide](./DevContainer.md) Please note
 that the devcontainer is built specifically for the `x64` architecture. Nevertheless,
 it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks
@@ -208,7 +232,7 @@ to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
 We advice to use the vscode devcontainer because then you can
 
 - quickly start developing,
-- use all the features of the Eastwood language server in vscode, and
+- nice Clean language support in vscode, and
 - you can run it on all platforms.
 
 ### Develop on local machine
@@ -216,6 +240,8 @@ We advice to use the vscode devcontainer because then you can
 You offcourse can use this project also direclty on your local machine by installing
 Clean from https://clean.cs.ru.nl/ yourself.
 
+- first check you platform is supported at
+  [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports).
 - install Clean from https://clean.cs.ru.nl/ into the `clean/` subfolder of your
   project.\
   Using the `./install-clean.bash` script you can automaticaly (re)install clean in your
@@ -224,6 +250,8 @@ Clean from https://clean.cs.ru.nl/ yourself.
   your bash shell
 - add the path where `cpm`, and or `clm` are located to the `PATH` environment
   variable in your bash shell
+- only on x64 based Windows or Linux you can
+  [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
 
 ## Build project without project file using `clm`
 
@@ -259,10 +287,14 @@ the `.icl` file from the examples folder to the `src` folder, and adapt the
 
 ## Installation details
 
+### Clean installation
+
 ### The Eastwood language server for vscode
 
-The project provides a ready-to-use environment for developing Clean applications
-using Docker development container via a devcontainer.
+Only on x64 based Windows or Linux you can use vscode with the Eastwood language
+server locally. Therefore this project provides a ready-to-use environment for
+developing Clean applications using Docker development container via a devcontainer,
+so that you can develop clean on all platforms.
 
 The development container (devcontainer) uses Nitrile to install the Eastwood
 language server. However, for developing applications, only the Clean distribution
@@ -286,6 +318,15 @@ are available in the Eastwood language server in vscode.
 Please note that the devcontainer is build specifically for the `x64` architecture.
 Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64`
 architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
+
+#### use the Eastwood language server for vscode locally on x64 based Windows or Linux
+
+You have to first [install nitrile](https://clean-lang.org/about.html#install), then
+install eastwood with nitrile with the command 'nitrile global install eastwood',
+then finally you can install the
+["Clean" extension in vscode](https://marketplace.visualstudio.com/items?itemName=TOPSoftware.clean-vs-code).
+If you then open this project folder with vscode you can edit Clean with the support
+of the Eastwood Language Server in vscode.
 
 ### Platforms the Clean compiler supports
 
@@ -379,5 +420,3 @@ Note:
 ## License
 
 The project is licensed under the BSD-2-Clause license.
-
-
