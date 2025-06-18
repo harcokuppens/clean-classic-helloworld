@@ -72,7 +72,7 @@ Hello You
 65536
 ```
 
-To simplify building and cleaning up the project we use some bash helpers scripts:
+To simplify cleaning and installing the project we use some bash helpers scripts:
 
 ```bash
 ./cleanup.bash             # cleans up the project build
@@ -83,6 +83,9 @@ To simplify building and cleaning up the project we use some bash helpers script
 The `./cleanup.bash all` is convenient when you stop working on the project to reduce
 it to only what is really necessary. For example removing the `clean/` folder saves
 disk space, and with the `./install-clean.bash` it can later easily be reinstalled.
+
+To use the bash helper scripts on Windows use the https://gitforwindows.org
+installation which comes with a 'Git Bash' application to open a bash shell.
 
 ## Project file
 
@@ -242,14 +245,16 @@ Clean from https://clean.cs.ru.nl/ yourself.
 
 - first check you platform is supported at
   [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports).
-- install Clean from https://clean.cs.ru.nl/ into the `clean/` subfolder of your
-  project.\
-  Using the `./install-clean.bash` script you can automaticaly (re)install clean in your
-  project.
-- set the `clean/` subfolder as value for the`CLEAN_HOME` environment variable in
-  your bash shell
+- install Clean from https://clean.cs.ru.nl/.
+  - You can install it either once in your home directory and reuse it for multiple
+    projects or install it directly in the `clean/` subfolder of your project.
+  - Using the `./install-clean.bash` script you can automaticaly (re)install clean
+    directly in the `clean/` subfolder of your project.
+- set the`CLEAN_HOME` environment variable in your bash shell to the location where
+  you did install Clean.
 - add the path where `cpm`, and or `clm` are located to the `PATH` environment
-  variable in your bash shell
+  variable in your bash shell.\
+  For example: `export PATH="$CLEAN_HOME/bin:$PATH"`
 - only on x64 based Windows or Linux you can
   [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
 
@@ -289,6 +294,12 @@ the `.icl` file from the examples folder to the `src` folder, and adapt the
 
 ### Clean installation
 
+To simplify installing Clean in the project we use a bash helpers script:
+
+```bash
+./install-clean.bash       # (re)installs the Clean installation in the `clean/` folder
+```
+
 ### The Eastwood language server for vscode
 
 Only on x64 based Windows or Linux you can use vscode with the Eastwood language
@@ -327,6 +338,21 @@ then finally you can install the
 ["Clean" extension in vscode](https://marketplace.visualstudio.com/items?itemName=TOPSoftware.clean-vs-code).
 If you then open this project folder with vscode you can edit Clean with the support
 of the Eastwood Language Server in vscode.
+
+For Windows also configure that the terminal within vscode uses the bash shell coming
+with https://gitforwindows.org by adding the following in the `.vscode/settings.json`
+file in your workspace:
+
+```json
+{
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash"
+}
+```
 
 ### Platforms the Clean compiler supports
 
