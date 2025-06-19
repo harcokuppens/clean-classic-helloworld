@@ -279,7 +279,11 @@ Clean from https://clean.cs.ru.nl/ yourself.
     default settings, which could for example be a Clean installation in your home
     directory.
 - only on x64 based Windows or Linux you can
-  [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
+  [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)\
+  Update: currently there is no Eastwood package for Windows, so currently only x64 Linux
+  is supported.\
+  So we can conclude for VsCode good editing support for Clean just use the VsCode
+  devcontainer.
 
 ## Build project without project file using `clm`
 
@@ -376,6 +380,9 @@ file in your workspace:
   "terminal.integrated.defaultProfile.windows": "Git Bash"
 }
 ```
+
+Update: currently there is no Eastwood package for Windows, so only Linux is
+supported.
 
 ### Platforms the Clean compiler supports
 
