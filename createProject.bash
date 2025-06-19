@@ -1,17 +1,15 @@
 #!/bin/bash
 
 script_dir=$(dirname $0)
-if [[ -d "$script_dir/clean" ]]
-then 
-   export CLEAN_HOME="$script_dir/clean"
-   export PATH="$CLEAN_HOME/bin:$PATH"   
+if [[ -d "$script_dir/clean" ]]; then
+    source "$script_dir/env.bash"
 fi
 echo "Using Clean in $CLEAN_HOME"
 
 # --- Global Variables ---
-ENVIRONMENT="StdEnv"  # Default environment
+ENVIRONMENT="StdEnv"              # Default environment
 declare -a SOURCE_FOLDERS=("src") # Default source folder
-declare -a LIB_FOLDERS=()          # Initialize as empty, will be populated by -l
+declare -a LIB_FOLDERS=()         # Initialize as empty, will be populated by -l
 
 PROJECT_NAME=""    # To store the project name argument
 MAIN_MODULE=""     # To store the main module name, defaults to PROJECTNAME if not specified
@@ -69,52 +67,49 @@ Note:
 # Check for --help specifically before using getopts
 for arg in "$@"; do
     case "$arg" in
-        --help)
-            usage
-            ;;
-        -h)
-            usage
-            ;;            
+    --help)
+        usage
+        ;;
+    -h)
+        usage
+        ;;
     esac
 done
 
 # Parse short options using getopts.
-while getopts "e:s:l:m:o:" opt; do
+while getopts ":e:s:l:m:o:" opt; do
     case "$opt" in
-        e)
-            ENVIRONMENT="$OPTARG"
-            ;;
-        s)
-            # # First, remove any trailing slash
-            # OPTARG="${OPTARG%/}"
-            # # Then, replace all slashes with asterisks
-            # OPTARG="${OPTARG//\//*}"
-            SOURCE_FOLDERS+=("$OPTARG") # Append additional source folder
-            ;;
-        l)
-            # # First, remove any trailing slash
-            # OPTARG="${OPTARG%/}"
-            # # Then, replace all slashes with asterisks
-            # OPTARG="${OPTARG//\//*}"
-            LIB_FOLDERS+=("$OPTARG")   # Append additional library folder
-            ;;
-        m)
-            MAIN_MODULE="$OPTARG"       # Set the main module name
-            ;;
-        o)  
-            EXECUTABLE_NAME="$OPTARG"  # Set the executable name
-            ;;   
-        h)
-            usage
-            ;;
-        \?) # Handle invalid options
-            echo "Error: Invalid option -$OPTARG." >&2
-            usage
-            ;;
-        :) # Handle missing arguments for options
-            echo "Error: Option -$OPTARG requires an argument." >&2
-            usage
-            ;;
+    e)
+        ENVIRONMENT="$OPTARG"
+        ;;
+    s)
+        # # First, remove any trailing slash
+        # OPTARG="${OPTARG%/}"
+        # # Then, replace all slashes with asterisks
+        # OPTARG="${OPTARG//\//*}"
+        SOURCE_FOLDERS+=("$OPTARG") # Append additional source folder
+        ;;
+    l)
+        # # First, remove any trailing slash
+        # OPTARG="${OPTARG%/}"
+        # # Then, replace all slashes with asterisks
+        # OPTARG="${OPTARG//\//*}"
+        LIB_FOLDERS+=("$OPTARG") # Append additional library folder
+        ;;
+    m)
+        MAIN_MODULE="$OPTARG" # Set the main module name
+        ;;
+    o)
+        EXECUTABLE_NAME="$OPTARG" # Set the executable name
+        ;;
+    \?) # Handle invalid options
+        echo "Error: Invalid option -$OPTARG." >&2
+        usage
+        ;;
+    :) # Handle missing arguments for options
+        echo "Error: Option -$OPTARG requires an argument." >&2
+        usage
+        ;;
     esac
 done
 
@@ -167,38 +162,30 @@ echo ""
 #     echo "Processing library directory: $lib_dir"
 # done
 
-
 # create project from template and set PROJECT_NAME in it
-sed -e "s/{ProjectName}/${PROJECT_NAME}/g"  -e "s/{MainModuleName}/${MAIN_MODULE}/g" template.prt   > "${PROJECT_NAME}.prj" 
+sed -e "s/{ProjectName}/${PROJECT_NAME}/g" -e "s/{MainModuleName}/${MAIN_MODULE}/g" template.prt >"${PROJECT_NAME}.prj"
 
 # then we set environment with cpm
 cpm project ${PROJECT_NAME}.prj target "${ENVIRONMENT}"
 
-
-
-for LIB_FOLDER in "${LIB_FOLDERS[@]}"
-do
+for LIB_FOLDER in "${LIB_FOLDERS[@]}"; do
     # First, remove any trailing slash
     LIB_FOLDER="${LIB_FOLDER%/}"
     # Then, replace all slashes with asterisks
     LIB_FOLDER="${LIB_FOLDER//\//*}"
     cpm project ${PROJECT_NAME}.prj path add "{Application}*lib*${LIB_FOLDER}"
     cpm project ${PROJECT_NAME}.prj path add "{Application}*Libraries*${LIB_FOLDER}"
-done 
+done
 
-for SOURCE_FOLDER in "${SOURCE_FOLDERS[@]}"
-do
+for SOURCE_FOLDER in "${SOURCE_FOLDERS[@]}"; do
     # First, remove any trailing slash
     SOURCE_FOLDER="${SOURCE_FOLDER%/}"
     # Then, replace all slashes with asterisks
     SOURCE_FOLDER="${SOURCE_FOLDER//\//*}"
     cpm project ${PROJECT_NAME}.prj path add "{Project}*${SOURCE_FOLDER}"
-done 
+done
 
 # finally we fix output path with cpm
 cpm project ${PROJECT_NAME}.prj exec "{Project}*bin*${EXECUTABLE_NAME}"
-
-
-
 
 exit 0
