@@ -35,12 +35,14 @@ script_dir=$(dirname $0)
 script_dir=${script_dir:?} # aborts with error if script_dir not set
 
 # cleanup bin/ folder. Make sure an empty bin/ remains, because cpm needs the bin/ folder to exist to write binary in it.
-rm -rf "$script_dir/bin" ; mkdir "$script_dir/bin"
+rm -rf "$script_dir/bin"
+mkdir "$script_dir/bin"
 # cleanup builds in src folders in "Clean System Files" folders
 find "$script_dir/src" -name 'Clean System Files' -type d -print0 | xargs -0 -I % rm -rf "%"
-
+find "$script_dir/examples" -name 'Clean System Files' -type d -print0 | xargs -0 -I % rm -rf "%"
 # also cleanup 'Clean System Files' folder in root folder created when using cpm
 rm -rf "$script_dir/Clean System Files"
+# note we do not cleanup 'Clean System Files' folders in the clean/ subfolder which would break the Clean installation
 
 if [[ "$1" == "all" ]]; then
     # also cleanup clean folder
@@ -48,7 +50,7 @@ if [[ "$1" == "all" ]]; then
 
     echo ""
     echo "Also remove the clean/ distribution installed in the project's folder."
-    echo "To recreate the clean/ folder in your workspace folder in the container run in the container: ./install-clean-clm.bash"
+    echo "To recreate the clean/ folder in your workspace folder in the container run in the container: ./install-clean.bash"
 else
     echo "NOTE: to also cleanup the clean installation in the project run: ./cleanup.bash all"
 fi

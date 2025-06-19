@@ -56,7 +56,7 @@ browse and inspect the libraries there within your project folder.
 To build the project you only have to run:
 
 ```bash
-$ cpm HelloWorld.prj
+$ ./cpm.bash HelloWorld.prj
 ```
 
 and then the result will be build in the project's `bin/` folder which you then can
@@ -75,10 +75,21 @@ Hello You
 To simplify cleaning and installing the project we use some bash helpers scripts:
 
 ```bash
+./cpm.bash                 # wrapper around cpm which uses cpm from ./clean if present
+./env.bash                 # do 'source env.bash' to use ./clean in your current bash shell
 ./cleanup.bash             # cleans up the project build
 ./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
 ./install-clean.bash       # (re)installs the Clean installation in the `clean/` folder
 ```
+
+The `./cpm.bash` allows you to use the `cpm` command in the Clean installation in
+your local project folder without having to setup the `CLEAN_HOME` and `PATH`
+variables for it. You can also do `source env.bash` in your bash shell and just use
+`cpm`. In this way you can have multiple Clean projects which each its own Clean
+installation without having conflicting configurations in your `~/.bashrc`. However
+within the docker DevContainer you can just use `cpm` because there the Clean
+installation in your workspace folder is configured globally in the container in
+`/etc/bash.bashrc`.
 
 The `./cleanup.bash all` is convenient when you stop working on the project to reduce
 it to only what is really necessary. For example removing the `clean/` folder saves
@@ -104,7 +115,7 @@ Once we have a project file we can build the project
 
 ```bash
 $ # build
-$ cpm HelloWorld.prj
+$ ./cpm.bash HelloWorld.prj
 $ # run
 $ ./bin/HelloWorld
 usage: HelloWorld  NAME
@@ -246,22 +257,27 @@ Clean from https://clean.cs.ru.nl/ yourself.
 - first check you platform is supported at
   [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports).
 - install Clean from https://clean.cs.ru.nl/.
-  - You can install it either once in your home directory and reuse it for multiple
-    projects or install it directly in the `clean/` subfolder of your project.
-  - Using the `./install-clean.bash` script you can automaticaly (re)install clean
-    directly in the `clean/` subfolder of your project. When you give this script 
-    a folder argument it will install in that folder instead.
-- configure the environment    
+  - You can install it either once in your home directory at `~/clean/` and reuse it
+    for multiple projects or install it directly in the `./clean/` subfolder of your
+    project.
+  - It is advised to install Clean in the project's `./clean/` subfolder, so that
+    projects stay independent.
+  - Using the `./install-clean.bash [-c] [DIRECTORY]` command you can automaticaly
+    (re)install Clean at the given directory, eg. `~/clean/`, where the default
+    location is `./clean`. With the option `-c` the script automatically adds
+    `CLEAN_HOME` and `PATH` configuration for the Clean installation in `~/.bashrc`.
+- configure the environment
   - set the`CLEAN_HOME` environment variable in your bash shell to the location where
     you did install Clean.
   - add the path where `cpm`, and or `clm` are located to the `PATH` environment
     variable in your bash shell.\
     For example: `export PATH="$CLEAN_HOME/bin:$PATH"`
-  - if you use the `./cpm.bash` wrapper script then this will automatically use the 
-    the clean installation in the `clean/` subfolder when installed without
-    needing to setup above `CLEAN_HOME` and `PATH` variable in your user .bashrc configuration. 
-    When  the `clean/` subfolder is not found it will fallback to the default settings, which
-    could for example be a Clean installation in your home directory.    
+  - if you use the `./cpm.bash` wrapper script then this will automatically use the
+    the Clean installation in the `clean/` subfolder when installed without needing
+    to setup above `CLEAN_HOME` and `PATH` variable in your user .bashrc
+    configuration. When the `clean/` subfolder is not found it will fallback to the
+    default settings, which could for example be a Clean installation in your home
+    directory.
 - only on x64 based Windows or Linux you can
   [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
 
@@ -281,8 +297,8 @@ commands:
     ./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
     ./install-clean.bash       # (re)installs the Clean installation in the `clean/` folder
 
-The `./build-clm.bash` command prints the `clm` command used to build the project. This
-command can be convenient to automate the build in an automated build setting.
+The `./build-clm.bash` command prints the `clm` command used to build the project.
+This command can be convenient to automate the build in an automated build setting.
 
 Note that the Clean compiler and its libraries are installed using a 'classic' clean
 distribution from the Clean programming language website https://clean.cs.ru.nl/ into

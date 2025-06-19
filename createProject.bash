@@ -166,15 +166,15 @@ echo ""
 sed -e "s/{ProjectName}/${PROJECT_NAME}/g" -e "s/{MainModuleName}/${MAIN_MODULE}/g" template.prt >"${PROJECT_NAME}.prj"
 
 # then we set environment with cpm
-cpm project ${PROJECT_NAME}.prj target "${ENVIRONMENT}"
+cpm project "${PROJECT_NAME}.prj" target "${ENVIRONMENT}"
 
 for LIB_FOLDER in "${LIB_FOLDERS[@]}"; do
     # First, remove any trailing slash
     LIB_FOLDER="${LIB_FOLDER%/}"
     # Then, replace all slashes with asterisks
     LIB_FOLDER="${LIB_FOLDER//\//*}"
-    cpm project ${PROJECT_NAME}.prj path add "{Application}*lib*${LIB_FOLDER}"
-    cpm project ${PROJECT_NAME}.prj path add "{Application}*Libraries*${LIB_FOLDER}"
+    cpm project "${PROJECT_NAME}.prj" path add "{Application}*lib*${LIB_FOLDER}"
+    cpm project "${PROJECT_NAME}.prj" path add "{Application}*Libraries*${LIB_FOLDER}"
 done
 
 for SOURCE_FOLDER in "${SOURCE_FOLDERS[@]}"; do
@@ -182,10 +182,10 @@ for SOURCE_FOLDER in "${SOURCE_FOLDERS[@]}"; do
     SOURCE_FOLDER="${SOURCE_FOLDER%/}"
     # Then, replace all slashes with asterisks
     SOURCE_FOLDER="${SOURCE_FOLDER//\//*}"
-    cpm project ${PROJECT_NAME}.prj path add "{Project}*${SOURCE_FOLDER}"
+    cpm project "${PROJECT_NAME}.prj" path add "{Project}*${SOURCE_FOLDER}"
 done
 
 # finally we fix output path with cpm
-cpm project ${PROJECT_NAME}.prj exec "{Project}*bin*${EXECUTABLE_NAME}"
+cpm project "${PROJECT_NAME}.prj" exec "{Project}*bin*${EXECUTABLE_NAME}"
 
 exit 0
