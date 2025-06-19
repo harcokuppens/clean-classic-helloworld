@@ -141,7 +141,16 @@ run_windows_commands() {
         # example command via cmd:
         # cmd //c "wmic os get OSArchitecture"
     fi
-    echo ""
+    # we do x64 install for both windows x64 as ARM, we hope x64 Clean works on ARM windows
+    # download and unzip clean
+    TMP_FILE="/tmp/clean$RANDOM.zip"
+    CLEAN_URL=""https://ftp.cs.ru.nl/Clean/Clean31/windows/Clean_3.1_64.zip""
+    curl -L -o "$TMP_FILE" "$CLEAN_URL"
+    # zip already contains "Clean 3.1/" folder so just unzip in project folder
+    unzip -d "$PROJECT_DIR" "$TMP_FILE"
+    mv "$PROJECT_DIR/Clean 3.1/" "$PROJECT_DIR/clean/"
+    rm "$TMP_FILE"
+    # done Clean already build
 }
 
 # --- Parse Command Line Options and Arguments ---
@@ -219,9 +228,7 @@ case "$OS" in
     run_linux_commands "$ARCH"
     ;;
 "MINGW"* | "CYGWIN"* | "MSYS"*) # Git Bash, Cygwin, MSYS op Windows
-    echo TODO
-    exit 1
-    #run_windows_commands "$ARCH"
+    run_windows_commands "$ARCH"
     ;;
 *)
     echo "unknown: $OS with architecture: $ARCH"
