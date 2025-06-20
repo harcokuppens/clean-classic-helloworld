@@ -231,6 +231,23 @@ folder sharing the `src/` and `clean/` folders.
 
 ## Setup Development environment
 
+You can either develop in Clean locally on your machine or in a devcontainer in
+vscode. We advice to use the vscode devcontainer because then you can
+
+- quickly start developing,
+- nice Clean language support in vscode, and
+- you can run it on all platforms.
+
+However only on Windows you can use the CleanIDE, which you can run from the "Git
+Bash" shell with command:
+
+```bash
+$ CleanIDE.exe '.\HelloWorld.prj'
+```
+
+Note that we use a backslash because the CleanIDE expects a windows path to the
+project file.
+
 ### Easy develop in DevContainer
 
 **Quick**
@@ -251,11 +268,12 @@ folder sharing the `src/` and `clean/` folders.
   cpm HelloWorld.prj
   bin/HelloWorld
   ```
-- In vscode you have 
-   - syntax highlighting 
-   - jump to definition or declaration
-   - autocomplete 
-   - code with a problem is automatically underlined in vscode
+
+- In vscode you have
+  - syntax highlighting
+  - jump to definition or declaration
+  - autocomplete
+  - code with a problem is automatically underlined in vscode
 - Note we assumed here that Docker and VsCode are already installed.
 
 **More details**
@@ -365,10 +383,36 @@ the `.icl` file from the examples folder to the `src` folder, and adapt the
 
 ### Clean installation
 
-To simplify installing Clean in the project we use a bash helpers script:
+To simplify installing Clean in the project we have a `install-clean.bash ` script to
+automate installing Clean:
 
-```bash
-./install-clean.bash [DIRECTORY]  # (re)installs the Clean installation in the given DIRECTORY (default: ./clean/)
+```
+$ ./install-clean.bash -h
+
+NAME
+
+    install-clean.bash  -  Install the clean distribution
+
+SYNOPSIS
+
+    install-clean.bash [-h|--help|help] [-c] [-y] [DIRECTORY]
+
+DESCRIPTION
+
+    Using this command you can automaticaly (re)install Clean at the given DIRECTORY.
+    When the DIRECTORY argument is not given it will install Clean in the project's
+    'clean/' subfolder.
+
+    The installation first checks whether an existing Clean installation exists
+    at the given installation location. If so, it first asks for permission to
+    remove the old installation. With the option '-y' the script takes automatically
+    'yes' as answer.
+
+    With the option '-c' the script automatically adds $CLEAN_HOME and $PATH configuration
+    for the Clean installation in '~/.bashrc'.
+
+    With the option '-h' or '--help' it displays this usage message.
+
 ```
 
 ### The Eastwood language server for vscode
