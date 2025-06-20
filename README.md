@@ -53,7 +53,9 @@ subfolder. You do not need to install any packages/dependencies to build the pro
 because all libraries are in the `clean/lib/` folder. As developer you can easily
 browse and inspect the libraries there within your project folder.
 
-To build the project you only have to run:
+To build the project you first have to setup the
+[Clean development environment](#setup-development-environment), and then you only
+have to run:
 
 ```bash
 $ ./cpm.bash HelloWorld.prj
@@ -136,8 +138,13 @@ of the project file and after committing it to git, you best can run:
 git update-index --assume-unchanged HelloWorld.prj
 ```
 
-then git will ignore all future changes. For an occusional change you have to undo
-this setting commit a change and apply this setting again:
+then git will ignore all future changes. Important to note that this is applied to
+your local git index only, and you cannot "commit" the assume-unchanged property.
+This means that you have to repeat this command for every clone location of the
+repository.
+
+For an occusional change you have to undo this setting commit a change and apply this
+setting again:
 
 ```bash
 git update-index --no-assume-unchanged
@@ -258,7 +265,9 @@ project file.
 
   ```bash
   git clone https://github.com/harcokuppens/clean-classic-helloworld
-  code clean-classic-helloworld
+  cd clean-classic-helloworld
+  git update-index --assume-unchanged HelloWorld.prj
+  code .
   ```
 
 - when vscode opens then say yes to "open devcontainer" dialog
@@ -308,6 +317,7 @@ Clean from https://clean.cs.ru.nl/ yourself.
   ```bash
   git clone https://github.com/harcokuppens/clean-classic-helloworld
   cd clean-classic-helloworld
+  git update-index --assume-unchanged HelloWorld.prj
   ./install-clean.bash
   source env.bash
   cpm HelloWorld.prj
