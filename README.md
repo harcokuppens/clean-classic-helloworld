@@ -233,6 +233,22 @@ folder sharing the `src/` and `clean/` folders.
 
 ### Easy develop in DevContainer
 
+**Quick**
+
+- open a bash shell. For Windows install https://gitforwindows.org and run "Git
+  Bash".
+- run:
+
+  ```bash
+  git clone https://github.com/harcokuppens/clean-classic-helloworld
+  code clean-classic-helloworld
+  # when vscode opens then say yes to "open devcontainer" dialog
+  ```
+
+  Note we assumed here that Docker and VsCode are already installed.
+
+**More details**
+
 This project can be used using a devcontainer which automatically setups a
 development environment with a 'classic' clean installation from
 https://clean.cs.ru.nl/ for you in a docker container from which you can directly
@@ -253,6 +269,23 @@ We advice to use the vscode devcontainer because then you can
 
 You offcourse can use this project also direclty on your local machine by installing
 Clean from https://clean.cs.ru.nl/ yourself.
+
+**Quick**
+
+- open a bash shell. For Windows install https://gitforwindows.org and run "Git
+  Bash".
+- run:
+
+  ```bash
+  git clone https://github.com/harcokuppens/clean-classic-helloworld
+  cd clean-classic-helloworld
+  ./install-clean.bash
+  source env.bash
+  cpm HelloWorld.prj
+  bin/HelloWorld
+  ```
+
+**More details**
 
 - first check you platform is supported at
   [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports).
