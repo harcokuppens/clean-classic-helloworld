@@ -6,5 +6,4 @@ HelloWorld
 .vscode
 itasks-*.tar.gz
 nitrile-packages
-bin
 clean
