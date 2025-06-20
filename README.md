@@ -242,10 +242,21 @@ folder sharing the `src/` and `clean/` folders.
   ```bash
   git clone https://github.com/harcokuppens/clean-classic-helloworld
   code clean-classic-helloworld
-  # when vscode opens then say yes to "open devcontainer" dialog
   ```
 
-  Note we assumed here that Docker and VsCode are already installed.
+- when vscode opens then say yes to "open devcontainer" dialog
+- then open a Terminal within vscode and run:
+
+  ```bash
+  cpm HelloWorld.prj
+  bin/HelloWorld
+  ```
+- In vscode you have 
+   - syntax highlighting 
+   - jump to definition or declaration
+   - autocomplete 
+   - code with a problem is automatically underlined in vscode
+- Note we assumed here that Docker and VsCode are already installed.
 
 **More details**
 

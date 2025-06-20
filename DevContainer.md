@@ -106,7 +106,7 @@ under the home (`~`) directory.
 8. After the development container is built,
    verify that everything is working by opening a terminal within VSCode and running:
 
-   `./build.bash`
+   `cpm HellWorld.prj`
 
 9. Afterwards, the example executable can be ran by executing `./bin/HelloWorld` within the VSCode terminal.
 
