@@ -27,6 +27,7 @@ the build of the project.
    * [Setup Development environment](#setup-development-environment)
       * [Easy develop in DevContainer](#easy-develop-in-devcontainer)
       * [Develop on local machine](#develop-on-local-machine)
+      * [Classic Clean IDE](#classic-clean-ide)
    * [Build project without project file using clm](#build-project-without-project-file-using-clm)
    * [Installation details](#installation-details)
       * [Clean installation](#clean-installation)
@@ -245,15 +246,9 @@ vscode. We advice to use the vscode devcontainer because then you can
 - nice Clean language support in vscode, and
 - you can run it on all platforms.
 
-However only on Windows you can use the CleanIDE, which you can run from the "Git
-Bash" shell with command:
-
-```bash
-$ CleanIDE.exe '.\HelloWorld.prj'
-```
-
-Note that we use a backslash because the CleanIDE expects a windows path to the
-project file.
+Finally, instead of building Clean with the cpm commandline tool, we can also use the
+classic CleanIDE. The CleanIDE is a Windows application but can also be run with wine
+on Linux and MacOS.
 
 ### Easy develop in DevContainer
 
@@ -356,6 +351,33 @@ Clean from https://clean.cs.ru.nl/ yourself.
   is supported.\
   So we can conclude for VsCode good editing support for Clean just use the VsCode
   devcontainer.
+
+### Classic Clean IDE
+
+The Clean IDE is currently only available for Windows. However using the wine tool
+you can run the CleanIDE on both Linux and MacOS.
+
+On Windows you can run the CleanIDE from the "Git Bash" shell with command:
+
+```bash
+$ CleanIDE.exe '.\HelloWorld.prj'
+```
+
+Note that we use a backslash because the CleanIDE expects a windows path to the
+project file.
+
+On Linux or Macos we can run CleanIDE.exe with wine:
+
+```bash
+$ wine CleanIDE.exe '.\HelloWorld.prj'
+```
+
+For MacOS we even created an
+[`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
+which in the background runs the `CleanIDE.exe` with wine for you. Using this app you
+can open `.prj`,`dcl`, and `.icl` files fron the Finder. For more details about
+`CleanIDE.app` see
+[CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
 ## Build project without project file using `clm`
 
