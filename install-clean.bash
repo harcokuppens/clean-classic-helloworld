@@ -74,7 +74,7 @@ run_macos_commands() {
         rm "$TMP_FILE"
         # patch  x64 clean for build on ARM mac
         CLEAN_VERSION="3.1"
-        PATCHFILE="$PROJECT_DIR/arm-mac/clean${CLEAN_VERSION}.patch"
+        PATCHFILE="$PROJECT_DIR/resources/arm-mac/clean${CLEAN_VERSION}.patch"
         patch -d "$CLEAN_HOME" -p1 <"$PATCHFILE"
         # build Clean
         if make -C "$CLEAN_HOME"; then

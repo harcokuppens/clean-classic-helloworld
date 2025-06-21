@@ -537,8 +537,9 @@ On a `ARM64` Mac using Rosetta emulation for `x64` you can install the Clean com
 for `x64` Macs, and then compile Clean programs for `x64` which then also run on that
 Mac using Rosetta emulation for `x64`. However you need to patch the 'classic' Clean
 installation for `x64` Macs to get the installation working correctly on a `ARM64`
-Mac. In the folder [`arm-mac/`](arm-mac/) we provide the installation instructions
-for installing the Clean compiler for a `x64` Mac on a `ARM64` Mac.
+Mac. In the folder [`resources/arm-mac/`](resources/arm-mac/) we provide the
+installation instructions for installing the Clean compiler for a `x64` Mac on a
+`ARM64` Mac.
 
 ### The `createProject.bash` command
 
