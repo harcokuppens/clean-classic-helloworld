@@ -50,6 +50,9 @@ run_macos_commands() {
         rm "$TMP_FILE"
         # build Clean
         if make -C "$CLEAN_HOME"; then
+            # patch environments in Clean installation
+            mkdir -p clean/etc/
+            cp resources/IDEEnvs clean/etc/
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
@@ -78,6 +81,9 @@ run_macos_commands() {
         patch -d "$CLEAN_HOME" -p1 <"$PATCHFILE"
         # build Clean
         if make -C "$CLEAN_HOME"; then
+            # patch environments in Clean installation
+            mkdir -p clean/etc/
+            cp resources/IDEEnvs clean/etc/
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
@@ -101,6 +107,9 @@ run_linux_commands() {
         rm "$TMP_FILE"
         # build Clean
         if make -C "$CLEAN_HOME"; then
+            # patch environments in Clean installation
+            mkdir -p clean/etc/
+            cp resources/IDEEnvs clean/etc/
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
@@ -118,6 +127,9 @@ run_linux_commands() {
         rm "$TMP_FILE"
         # build Clean
         if make -C "$CLEAN_HOME"; then
+            # patch environments in Clean installation
+            mkdir -p clean/etc/
+            cp resources/IDEEnvs clean/etc/
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
