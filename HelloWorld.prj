@@ -1,7 +1,7 @@
 Version: 1.5
 Global
 	ProjectRoot:	.
-	Target:	StdEnv
+	Target:	Platform
 	Exec:	{Project}*bin*HelloWorld
 	ByteCode:	
 	CodeGen
@@ -51,11 +51,7 @@ Global
 	Paths
 		Path:	{Project}*src*WrapDebug
 		Path:	{Project}*src
-		Path:	{Application}*Libraries*ArgEnv
 		Path:	{Application}*lib*ArgEnv
-		Path:	{Application}*Libraries*Platform
-		Path:	{Project}*src
-		Path:	{Application}*lib*Platform
 	Precompile:	
 	Postlink:	
 MainModule
