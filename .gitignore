@@ -7,3 +7,7 @@ HelloWorld
 itasks-*.tar.gz
 nitrile-packages
 clean
+# Ignore everything in the 'bin' directory
+bin/*
+# Except the .gitignore file within the 'bin' directory
+!bin/.gitkeep
