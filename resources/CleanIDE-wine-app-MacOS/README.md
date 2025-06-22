@@ -52,6 +52,46 @@ The `CleanIDE.app` supports:
 - open `.prj`,`dcl`, and `.icl` files fron the Finder
 - drag & drop of `.prj`,`dcl`, and `.icl` files
 
+Limitations:
+
+- The binaries build are Windows binaries, and must als be run using wine. However
+  you can run the build binaries within the Clean app, or when you install the
+  commandline version of Clean for MacOS you can build binaries which work directly
+  on MacOS.
+- the MacOS application always launches a new Clean IDE instance.\
+  Explanation:
+
+        On Windows
+
+            - click on "FILE.icl" file in explorer : opens in existing Clean IDE instance
+              note: this is the same as running in terminal the command:
+
+                          start FILE.icl
+                              or
+                          start CleanIDE.exe file.icl
+
+                     The latter when the CleanIDE.exe is not configured
+                     as the default application for ".icl" files.
+
+            - in windows terminal: run the command
+
+                    cleanIDE.exe FILE.icl
+
+              this always opens a new Clean IDE instance.
+
+        On MacOS using wine: start is broken:
+
+            In real Windows, the "start" (and shell file associations) can invoke an existing program window using advanced
+            messaging like DDE (Dynamic Data Exchange) or COM.
+            CleanIDE (like many Windows apps) probably uses DDE or similar to receive new files when already open.
+
+            In Wine, those mechanisms are either partially implemented or not implemented at all, so every
+
+                start CleanIDE.exe FILE.icl
+
+            ends up launching a new process, because there's no way for Wine to "tell" CleanIDE
+            to reuse the existing window.
+
 Requirements:
 
 - Platypus app from https://sveinbjorn.org/platypus \
