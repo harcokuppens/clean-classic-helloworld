@@ -111,8 +111,17 @@ To start your project you first have to create a main module file in the `src/`
 folder. Then you can create a project file using the command:
 
 ```bash
-$ ./createProject.bash -s src/WrapDebug/ -l Platform -l ArgEnv HelloWorld
+$ ./createProject.bash -s src/WrapDebug/ -e Platform -l ArgEnv HelloWorld
 ```
+
+The above command creates a project file `HelloWorld.prj` which next to the default
+`src` dir, has another source dir `src/WrapDebug/`. It uses the Clean environment
+`Platform`, and adds an extra library `ArgEnv`. The Clean environments you can use
+are defined in `clean/etc/IDEEnvs` for Linux/MacOS and in `clean/Config/IDEEnvs` on
+Windows. With a text editor you can easily change and add environments in this file.
+On Windows you can use the [Clean IDE](doc/2001_UserManual_Clean_IDE_for_Windows.pdf)
+to easily edit environments in a GUI. For more details about above command see
+[the documentation of the createProject.bash command](#the-createprojectbash-command).
 
 Once we have a project file we can build the project
 
@@ -593,6 +602,29 @@ Note:
   To ensure project folder compatibility across Windows and Linux/macOS,
   both 'lib' and 'Libraries' paths are handled internally where appropriate.
 ```
+
+For example to start your project you first have to create a main module file in the
+`src/` folder. Then you can create a project file using the command:
+
+```bash
+$ ./createProject.bash -s src/WrapDebug/ -e Platform -l ArgEnv HelloWorld
+```
+
+The above command creates a project file `HelloWorld.prj` which next to the default
+`src` dir, has another source dir `src/WrapDebug/`. It uses the Clean environment
+`Platform`, and adds an extra library `ArgEnv`. The Clean environments you can use
+are defined in `clean/etc/IDEEnvs` for Linux/MacOS and in `clean/Config/IDEEnvs` on
+Windows. With a text editor you can easily change and add environments in this file.
+On Windows you can use the [Clean IDE](doc/2001_UserManual_Clean_IDE_for_Windows.pdf)
+to easily edit environments in a GUI.
+
+Both `cpm` and the `the Clean IDE` use the project file to build the project. For
+more information about environments you can also read
+[the User Manual for the Clean IDE on Windows](doc/2001_UserManual_Clean_IDE_for_Windows.pdf).
+
+Technical detail: when your Clean installation has no IDEEnvs file then the `cpm`
+command automatically creates an IDEEnvs file for you. This fails if no `clean/etc/`
+or `clean/Config/` directory exists.
 
 ## License
 

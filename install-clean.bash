@@ -52,7 +52,7 @@ run_macos_commands() {
         if make -C "$CLEAN_HOME"; then
             # patch environments in Clean installation
             mkdir -p clean/etc/
-            cp resources/IDEEnvs clean/etc/
+            cp resources/IDEEnvs.MacOS clean/etc/IDEEnvs
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
@@ -83,7 +83,7 @@ run_macos_commands() {
         if make -C "$CLEAN_HOME"; then
             # patch environments in Clean installation
             mkdir -p clean/etc/
-            cp resources/IDEEnvs clean/etc/
+            cp resources/IDEEnvs.MacOS clean/etc/IDEEnvs
             echo "Succesfully installed Clean"
         else
             echo "Something went wrong when installing Clean"
