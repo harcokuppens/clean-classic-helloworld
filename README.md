@@ -101,6 +101,19 @@ disk space, and with the `./install-clean.bash` it can later easily be reinstall
 To use the bash helper scripts on Windows use the https://gitforwindows.org
 installation which comes with a 'Git Bash' application to open a bash shell.
 
+**IMPORTANT:**
+
+> on MacOS we need to disable Nano memory malloc by doing in our bash shell:
+>
+> ```
+> export MallocNanoZone=0
+> ```
+>
+> We need to disable nanozone in memory allocation because it has
+> [a bug in libmalloc](https://blackwinghq.com/blog/posts/playing-with-libmalloc/).
+> The `MallocNanoZone` environment variable is set automatically to 0 in vscode's
+> terminal, and when you use either `./cpm.bash` or `source env.bash`.
+
 ## Project file
 
 The best way to configure and build your project is by using project files with
