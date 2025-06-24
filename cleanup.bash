@@ -8,7 +8,7 @@ NAME
 
 SYNOPSIS
 
-    cleanup [-h|--help|help] [all]
+    cleanup [-h|--help|help] [--all]
 
 DESCRIPTION 
 
@@ -45,7 +45,7 @@ find "$script_dir/examples" -name 'Clean System Files' -type d -print0 | xargs -
 rm -rf "$script_dir/Clean System Files"
 # note we do not cleanup 'Clean System Files' folders in the clean/ subfolder which would break the Clean installation
 
-if [[ "$1" == "all" ]]; then
+if [[ "$1" == "--all" ]]; then
     # also cleanup clean folder
     rm -rf "$script_dir/clean"
 
@@ -53,5 +53,5 @@ if [[ "$1" == "all" ]]; then
     echo "Also remove the clean/ distribution installed in the project's folder."
     echo "To recreate the clean/ folder in your workspace folder in the container run in the container: ./install-clean.bash"
 else
-    echo "NOTE: to also cleanup the clean installation in the project run: ./cleanup.bash all"
+    echo "NOTE: to also cleanup the clean installation in the project run: ./cleanup.bash --all"
 fi
