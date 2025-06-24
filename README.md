@@ -84,7 +84,7 @@ To simplify cleaning and installing the project we use some bash helpers scripts
 ./cpm.bash                 # wrapper around cpm which uses cpm from ./clean if present
 ./env.bash                 # do 'source env.bash' to use ./clean in your current bash shell
 ./cleanup.bash             # cleans up the project build
-./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
+./cleanup.bash --all       # cleans up the project build, and the Clean installation in the `clean/` folder
 ./install-clean.bash       # (re)installs the Clean installation in the `clean/` folder
 ```
 
@@ -97,7 +97,7 @@ within the docker DevContainer you can just use `cpm` because there the Clean
 installation in your workspace folder is configured globally in the container in
 `/etc/bash.bashrc`.
 
-The `./cleanup.bash all` is convenient when you stop working on the project to reduce
+The `./cleanup.bash --all` is convenient when you stop working on the project to reduce
 it to only what is really necessary. For example removing the `clean/` folder saves
 disk space, and with the `./install-clean.bash` it can later easily be reinstalled.
 
@@ -472,7 +472,7 @@ commands:
     ./build-clm.bash           # builds the Clean project using clm. Configure the build using the
                                # variables $projects, $libs and $srcDirs in this script.
     ./cleanup.bash             # cleans up the project build
-    ./cleanup.bash all         # cleans up the project build, and the Clean installation in the `clean/` folder
+    ./cleanup.bash --all       # cleans up the project build, and the Clean installation in the `clean/` folder
     ./install-clean.bash       # (re)installs the Clean installation in the `clean/` folder
 
 The `./build-clm.bash` command prints the `clm` command used to build the project.
