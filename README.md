@@ -401,11 +401,29 @@ can open `.prj`,`dcl`, and `.icl` files fron the Finder. For more details about
 `CleanIDE.app` see
 [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
-**Important:** remember that Wine is not perfect. Some Windows API's are not good
-implemented. For example, on wine on MacOS, the project
-`examples/PlatformExamples/IPLookup.prj` builds in the CleanIDE and runs, but does
-print the empty string. When you install the MacOS version of Clean and build it with
-the commandline using `cpm` then it works fine!
+**Important:**
+
+- Due to Wine limitations the MacOS application always launches a new Clean IDE
+  instance when opening a `.prj`, `.icl`, or `.dcl` file.
+- MacOS adds extra protection, called TCC, to some folders in your home directory,
+  eg. ~/Desktop ~/Documents. When opening a Clean file from one of these specially
+  protected folders you have to many times allow the same permission. Somehow the
+  permission does not stick in wine. This is annoying. A good work around is by not
+  putting your Clean project in such protected folder.
+
+  Instead of putting your CleanIDE project in:
+
+        ~/Documents/CleanIDE_Projects/MyProject
+
+  Put it in:
+
+        ~/CleanIDE_Projects/MyProject
+
+- Remember that Wine is not perfect. Some Windows API's are not good implemented. For
+  example, on wine on MacOS, the project `examples/PlatformExamples/IPLookup.prj`
+  builds in the CleanIDE and runs, but does print the empty string. When you install
+  the MacOS version of Clean and build it with the commandline using `cpm` then it
+  works fine!
 
 ## Build project without project file using `clm`
 
