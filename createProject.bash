@@ -6,6 +6,8 @@ if [[ -d "$script_dir/clean" ]]; then
 fi
 echo "Using Clean in $CLEAN_HOME"
 
+TEMPLATE_PROJECT="$script_dir/resources/template.prt" 
+
 # --- Global Variables ---
 ENVIRONMENT="StdEnv"              # Default environment
 declare -a SOURCE_FOLDERS=("src") # Default source folder
@@ -163,7 +165,8 @@ echo ""
 # done
 
 # create project from template and set PROJECT_NAME in it
-sed -e "s/{ProjectName}/${PROJECT_NAME}/g" -e "s/{MainModuleName}/${MAIN_MODULE}/g" template.prt >"${PROJECT_NAME}.prj"
+sed -e "s/{ProjectName}/${PROJECT_NAME}/g" -e "s/{MainModuleName}/${MAIN_MODULE}/g" "$TEMPLATE_PROJECT" >"${PROJECT_NAME}.prj"
+
 
 # then we set environment with cpm
 cpm project "${PROJECT_NAME}.prj" target "${ENVIRONMENT}"

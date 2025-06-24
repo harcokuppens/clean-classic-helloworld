@@ -37,6 +37,7 @@ script_dir=${script_dir:?} # aborts with error if script_dir not set
 # cleanup bin/ folder. Make sure an empty bin/ remains, because cpm needs the bin/ folder to exist to write binary in it.
 rm -rf "$script_dir/bin"
 mkdir "$script_dir/bin"
+touch "$script_dir/bin/.gitkeep"
 # cleanup builds in src folders in "Clean System Files" folders
 find "$script_dir/src" -name 'Clean System Files' -type d -print0 | xargs -0 -I % rm -rf "%"
 find "$script_dir/examples" -name 'Clean System Files' -type d -print0 | xargs -0 -I % rm -rf "%"
