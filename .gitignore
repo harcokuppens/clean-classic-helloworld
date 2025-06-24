@@ -6,6 +6,8 @@ HelloWorld
 .vscode
 itasks-*.tar.gz
 nitrile-packages
+.DS_Store
+**/tmp/
 clean
 # Ignore everything in the 'bin' directory
 bin/*
