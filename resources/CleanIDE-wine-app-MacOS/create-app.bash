@@ -29,9 +29,9 @@ unzip -d "$TMP_DIR" "$TMP_FILE"
 rm "$TMP_FILE"
 mv "$TMP_DIR/Clean 3.1/" "$WINDOWS_CLEAN_DIR"
 
-/usr/local/bin/platypus --droppable --app-icon "$ICON" \
+/usr/local/bin/platypus --quit-after-execution --droppable --app-icon "$ICON" \
     --document-icon "$ICON" --name 'CleanIDE' \
-    --interface-type 'None' --interpreter '/bin/bash' --bundle-identifier nl.ru.cs.clean \
+    --interface-type 'None' --interpreter '/bin/bash' --bundle-identifier nl.ru.cs.wineclean \
     --suffixes 'icl|prj|dcl' --uniform-type-identifiers 'public.item' \
     --bundled-file "$WINDOWS_CLEAN_DIR" --author 'Harco Kuppens' \
     "$APP_LAUNCHER"
