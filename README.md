@@ -402,7 +402,7 @@ $ wine CleanIDE.exe '.\HelloWorld.prj'
 For MacOS we even created an
 [`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
 which in the background runs the `CleanIDE.exe` with wine for you. Using this app you
-can open `.prj`,`dcl`, and `.icl` files fron the Finder. For more details about
+can open `.prj`,`dcl`, and `.icl` files from the Finder. For more details about
 `CleanIDE.app` see
 [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
