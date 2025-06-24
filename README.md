@@ -28,6 +28,9 @@ the build of the project.
       * [Easy develop in DevContainer](#easy-develop-in-devcontainer)
       * [Develop on local machine](#develop-on-local-machine)
       * [Classic Clean IDE](#classic-clean-ide)
+         * [Intro](#intro)
+         * [Navigation tips](#navigation-tips)
+         * [Important](#important)
    * [Build project without project file using clm](#build-project-without-project-file-using-clm)
    * [Installation details](#installation-details)
       * [Clean installation](#clean-installation)
@@ -376,6 +379,8 @@ Clean from https://clean.cs.ru.nl/ yourself.
 
 ### Classic Clean IDE
 
+#### Intro
+
 The Clean IDE is currently only available for Windows. However using the wine tool
 you can run the CleanIDE on both Linux and MacOS.
 
@@ -397,11 +402,40 @@ $ wine CleanIDE.exe '.\HelloWorld.prj'
 For MacOS we even created an
 [`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
 which in the background runs the `CleanIDE.exe` with wine for you. Using this app you
-can open `.prj`,`dcl`, and `.icl` files fron the Finder. For more details about
+can open `.prj`,`dcl`, and `.icl` files from the Finder. For more details about
 `CleanIDE.app` see
 [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
-**Important:**
+#### Navigation tips
+
+The following shortcuts make navigation your source code in the IDE much easier:
+
+**`Ctrl`+`double-click-word`**:\
+&emsp; searches for definition of word in project
+
+**`Shift`+`Ctrl`+`double-click-word`**:\
+&emsp; searches for implementations of word in project
+
+**`select-word`** then press **`CTRL-=`**:\
+&emsp; searches for usage of word as identifier in the project
+
+**`no-selection`** then press **`CTRL-=`**:\
+&emsp; generic search menu for identifier/declaration/definition in the project\
+&emsp; By default shows last searched value in search box.
+
+**`select-module-name`** then press **`CTRL-D`**:\
+&emsp; opens this definition module
+
+**`select-module-name`** then press **`CTRL-I`**:\
+&emsp; opens this implementation module
+
+**`CTRL-/`**:\
+&emsp; toggle between implementation and definition module of the current module
+
+For more details read the
+[User Manual for Clean IDE on Windows](doc/2001_UserManual_Clean_IDE_for_Windows.pdf)
+
+#### Important
 
 - Due to Wine limitations the MacOS application always launches a new Clean IDE
   instance when opening a `.prj`, `.icl`, or `.dcl` file.
