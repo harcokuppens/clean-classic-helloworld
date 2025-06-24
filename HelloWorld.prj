@@ -51,6 +51,8 @@ Global
 	Paths
 		Path:	{Project}*src*WrapDebug
 		Path:	{Project}*src
+		Path:	{Application}*Libraries*ArgEnv
+		Path:	{Project}*src
 		Path:	{Application}*lib*ArgEnv
 	Precompile:	
 	Postlink:	
