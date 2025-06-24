@@ -401,6 +401,12 @@ can open `.prj`,`dcl`, and `.icl` files fron the Finder. For more details about
 `CleanIDE.app` see
 [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
+**Important:** remember that Wine is not perfect. Some Windows API's are not good
+implemented. For example, on wine on MacOS, the project
+`examples/PlatformExamples/IPLookup.prj` builds in the CleanIDE and runs, but does
+print the empty string. When you install the MacOS version of Clean and build it with
+the commandline using `cpm` then it works fine!
+
 ## Build project without project file using `clm`
 
 `Clm` is the commandline build tool for Clean projects without needing a Clean

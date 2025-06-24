@@ -64,8 +64,8 @@ $ duti -s nl.ru.cs.wineclean .dcl all
 
 ## Work around
 
-MacOS adds extra protection, called TCC, to some folders in your home directory,
-eg. ~/Desktop ~/Documents. When opening a Clean file from one of these specially
+MacOS adds extra protection, called TCC, to some folders in your home directory, eg.
+~/Desktop ~/Documents. When opening a Clean file from one of these specially
 protected folders you have to many times allow the same permission. Somehow the
 permission does not stick in wine. This is annoying. A good work around is by not
 putting your Clean project in such protected folder.
@@ -78,13 +78,17 @@ Put it in:
 
       ~/CleanIDE_Projects/MyProject
 
-
 ## Limitations
 
 - The binaries build are Windows binaries, and must als be run using wine. However
   you can run the build binaries within the Clean app, or when you install the
   commandline version of Clean for MacOS you can build binaries which work directly
   on MacOS.
+
+- Wine is not perfect. Some Windows API's are not good implemented. For example the
+  project `examples/PlatformExamples/IPLookup.prj` builds in the CleanIDE and runs,
+  but does print the empty string. When you install the MacOS version of Clean and
+  build it with the commandline using `cpm` then it works fine!
 
 - the MacOS application always launches a new Clean IDE instance.
 
