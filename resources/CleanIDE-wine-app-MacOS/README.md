@@ -17,10 +17,86 @@ wine "Clean 3.1/CleanIDE.exe"
 wine "Clean 3.1/CleanIDE.exe" "somedir\myproject.prj"
 ```
 
+Important to note that Wine is not perfect. Some Windows API's are not good implemented.
+However most things work fine.
 
-# Create MacOS app for Windows CleanIDE GUI app running with wine on Linux or MacOS
+
+##  CleanIDE App on Macos (running CleanIDE.exe on wine)
 
 First you need to install wine. On MacOS you an easily install wine using homebrew with the command:
+
+  ```bash
+  brew install wine-stable
+  ```
+
+Download  the
+[`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
+from 
+[here](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip). 
+Unzip it and move the 'CleanIDE.app' to your `/Applications/` folder. 
+
+The `CleanIDE.app` supports:
+
+- open `.prj`,`dcl`, and `.icl` files fron the Finder\
+- drag & drop of `.prj`,`dcl`, and `.icl` files
+
+Note that this requires you first have to associate them to the CleanIDE.app via the
+Finder's "Get Info" context menu. You can also do this with the `duti` command:
+
+```bash
+$ brew install duti
+$ duti -s nl.ru.cs.wineclean .prj all
+$ duti -s nl.ru.cs.wineclean .icl all
+$ duti -s nl.ru.cs.wineclean .dcl all
+```
+
+
+
+### Work around for annoying permission dialogs
+
+MacOS adds extra protection, called TCC, to some folders in your home directory, eg.
+~/Desktop ~/Documents. When opening a Clean file from one of these specially
+protected folders you have to many times allow the same permission. Somehow the
+permission does not stick in wine. This is annoying. A good work around is by not
+putting your Clean project in such protected folder.
+
+Instead of putting your CleanIDE project in:
+
+      ~/Documents/CleanIDE_Projects/MyProject
+
+Put it in:
+
+      ~/CleanIDE_Projects/MyProject
+
+### Limitations of CleanIDE.exe on MacOS
+
+- The binaries build are Windows binaries, and must als be run using wine. However
+  you can run the build binaries within the Clean app, or when you install the
+  commandline version of Clean for MacOS you can build binaries which work directly
+  on MacOS.
+
+- Wine is not perfect. Some Windows API's are not good implemented. For example the
+  project `examples/PlatformExamples/IPLookup.prj` builds in the CleanIDE and runs,
+  but does print the empty string. When you install the MacOS version of Clean and
+  build it with the commandline using `cpm` then it works fine!
+
+- the MacOS application always launches a new Clean IDE instance.
+
+
+### Background: how we created the MacOS app for Windows CleanIDE GUI app running with wine on  MacOS
+
+Requirements:
+
+- Platypus app from https://sveinbjorn.org/platypus \
+   After installing Platypus app install the platypus command via the App by pressing
+  an install button at:
+
+  ```
+  menu "Platypus -> Settings -> click "Install" button
+  ```
+
+- wine \
+  on MacOS you an easily install wine using homebrew with the command:
 
   ```bash
   brew install wine-stable
@@ -38,58 +114,7 @@ This App can be easily created with the command:
 # the CleanIDE.app/ app folder is created in current folder
 ```
 
-An already build version of the
-[`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
-can be downloaded
-[here](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip).
-**IMPORTANT:** this app still requires the homebrew `wine-stable` package to be installed.
-
-The `CleanIDE.app` supports:
-
-- open `.prj`,`dcl`, and `.icl` files fron the Finder\
-- drag & drop of `.prj`,`dcl`, and `.icl` files
-
-Note that this requires you first have to associate them to the CleanIDE.app via the
-Finder's "Get Info" context menu. You can also do this with the `duti` command:
-
-```bash
-$ brew install duti
-$ duti -s nl.ru.cs.wineclean .prj all
-$ duti -s nl.ru.cs.wineclean .icl all
-$ duti -s nl.ru.cs.wineclean .dcl all
-```
-
-## Work around
-
-MacOS adds extra protection, called TCC, to some folders in your home directory, eg.
-~/Desktop ~/Documents. When opening a Clean file from one of these specially
-protected folders you have to many times allow the same permission. Somehow the
-permission does not stick in wine. This is annoying. A good work around is by not
-putting your Clean project in such protected folder.
-
-Instead of putting your CleanIDE project in:
-
-      ~/Documents/CleanIDE_Projects/MyProject
-
-Put it in:
-
-      ~/CleanIDE_Projects/MyProject
-
-## Limitations
-
-- The binaries build are Windows binaries, and must als be run using wine. However
-  you can run the build binaries within the Clean app, or when you install the
-  commandline version of Clean for MacOS you can build binaries which work directly
-  on MacOS.
-
-- Wine is not perfect. Some Windows API's are not good implemented. For example the
-  project `examples/PlatformExamples/IPLookup.prj` builds in the CleanIDE and runs,
-  but does print the empty string. When you install the MacOS version of Clean and
-  build it with the commandline using `cpm` then it works fine!
-
-- the MacOS application always launches a new Clean IDE instance.
-
-  Explanation:
+Explanation of limitations of CleanIDE on MacOS:
 
         On Windows you have 2 ways to launch:
 
@@ -171,19 +196,3 @@ Put it in:
 
             Opening in an existing instance of Clean is unfortunately not possible in wine.
 
-Requirements:
-
-- Platypus app from https://sveinbjorn.org/platypus \
-   After installing Platypus app install the platypus command via the App by pressing
-  an install button at:
-
-  ```
-  menu "Platypus -> Settings -> click "Install" button
-  ```
-
-- wine \
-  on MacOS you an easily install wine using homebrew with the command:
-
-  ```bash
-  brew install wine-stable
-  ```
