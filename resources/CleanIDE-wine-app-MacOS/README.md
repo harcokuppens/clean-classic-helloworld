@@ -111,8 +111,9 @@ This App can be easily created with the command:
 
 ```bash
 ./create-app.bash
-# the CleanIDE.app/ app folder is created in current folder
 ```
+
+which causes a `CleanIDE.app/` app folder to be created in the current folder.
 
 ### Background: explanation of limitations of CleanIDE on MacOS:
 
