@@ -114,7 +114,7 @@ This App can be easily created with the command:
 # the CleanIDE.app/ app folder is created in current folder
 ```
 
-Explanation of limitations of CleanIDE on MacOS:
+### Background: explanation of limitations of CleanIDE on MacOS:
 
         On Windows you have 2 ways to launch:
 
