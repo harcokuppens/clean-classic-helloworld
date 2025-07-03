@@ -17,20 +17,16 @@ wine "Clean 3.1/CleanIDE.exe"
 wine "Clean 3.1/CleanIDE.exe" "somedir\myproject.prj"
 ```
 
-## Create MacOS app for Windows CleanIDE GUI app
 
-Requirements:
+# Create MacOS app for Windows CleanIDE GUI app running with wine on Linux or MacOS
 
-- wine \
-  on MacOS you an easily install wine using homebrew with the command:
+First you need to install wine. On MacOS you an easily install wine using homebrew with the command:
 
   ```bash
   brew install wine-stable
   ```
 
-# Create MacOS app for Windows CleanIDE GUI app running with wine on Linux or MacOS
-
-Using the Platypus app you can easily create a MacOS application from a script. We
+Using the Platypus app you then can easily create a MacOS application using the `create-app.bash` script. We
 use it to create a MacOS application
 [`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
 for the Windows CleanIDE.exe which runs in the background with wine.
@@ -46,6 +42,7 @@ An already build version of the
 [`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
 can be downloaded
 [here](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip).
+**IMPORTANT:** this app still requires the homebrew `wine-stable` package to be installed.
 
 The `CleanIDE.app` supports:
 
