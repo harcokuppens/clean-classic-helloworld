@@ -8,7 +8,8 @@ building other projects.
 The project is build with the `cpm` tool (Clean Project Manager). You can also build
 the project with the `clm` tool (CLean Make), however the `cpm` tool is preferred
 because it uses a project file which gives you fine level control of your project and
-which is also used by the Clean IDE (native for Windows, with wine on MacOS and Linux).
+which is also used by the Clean IDE (native for Windows, with wine on MacOS and
+Linux).
 
 There is also a similar repository where we build the same HelloWorld Clean code
 using a Clean installation using the nitrile tool at:
@@ -26,8 +27,11 @@ and build it with cpm or the CleanIDE.
    * [Try out more examples](#try-out-more-examples)
    * [Clean documentation](#clean-documentation)
    * [Setup Development environment](#setup-development-environment)
-      * [Easy develop in DevContainer](#easy-develop-in-devcontainer)
-      * [Develop on local machine](#develop-on-local-machine)
+      * [Pre-setup DevContainer in VsCode](#pre-setup-devcontainer-in-vscode)
+      * [Local installation](#local-installation)
+         * [Quick](#quick)
+         * [More details](#more-details)
+         * [IDE support on local machine](#ide-support-on-local-machine)
       * [Classic Clean IDE](#classic-clean-ide)
          * [Intro](#intro)
          * [Navigation tips](#navigation-tips)
@@ -98,9 +102,10 @@ within the docker DevContainer you can just use `cpm` because there the Clean
 installation in your workspace folder is configured globally in the container in
 `/etc/bash.bashrc`.
 
-The `./cleanup.bash --all` is convenient when you stop working on the project to reduce
-it to only what is really necessary. For example removing the `clean/` folder saves
-disk space, and with the `./install-clean.bash` it can later easily be reinstalled.
+The `./cleanup.bash --all` is convenient when you stop working on the project to
+reduce it to only what is really necessary. For example removing the `clean/` folder
+saves disk space, and with the `./install-clean.bash` it can later easily be
+reinstalled.
 
 To use the bash helper scripts on Windows use the https://gitforwindows.org
 installation which comes with a 'Git Bash' application to open a bash shell.
@@ -269,28 +274,30 @@ There are multiple ways to setup your development environment:
 
 - using a pre-setup devcontainer, this gives you
 
-    - a quick start in developing,
-    - nice Clean language support in vscode, and
-    - you can run it on all platforms.  
+  - a quick start in developing,
+  - nice Clean language support in vscode, and
+  - you can run it on all platforms.
 
-- using a local installation of Clean 
+- using a local installation of Clean
 
-    - no docker needed, but you must do the installation
-    - use the vscode editor for Clean, however it must  be noted
-      that the language server for Clean is currently only available for Linux
-    - use the classic CleanIDE. 
-        The CleanIDE is a Windows application but can also be run with wine
-        on Linux and MacOS.
+  - no docker needed, but you must do the installation
+  - use the vscode editor for Clean, however it must be noted that the language
+    server for Clean is currently only available for Linux
+  - use the classic CleanIDE. The CleanIDE is a Windows application but can also be
+    run with wine on Linux and MacOS.
 
-For getting started quickly we advice to use the vscode devcontainer, however this 
-quick start assumes that you already have docker installed, otherwise it might
-be faster to just do a local installation an use the classic CleanIDE.
+In all development environments we always can build the project with the `cpm`
+commandline tool. For editing you can use VsCode or the CleanIDE.
+
+For getting started quickly with support on all platforms we advice to use the vscode
+devcontainer, however this quick start assumes that you already have docker
+installed, otherwise it might be faster to just do a local installation.
 
 VsCode is a more modern editor giving you all new features, but the classic CleanIDE
 gives better language support. So probably you can use both tools and use each for
-what they are better in.   
+what they are better in.
 
-### Easy develop in DevContainer
+### Pre-setup DevContainer in VsCode
 
 **Quick**
 
@@ -313,11 +320,11 @@ what they are better in.
   bin/HelloWorld
   ```
 
-- In vscode you have
+- In vscode you can edit the code with the following features::
   - syntax highlighting
   - jump to definition or declaration
   - autocomplete
-  - code with a problem is automatically underlined in vscode
+  - automatic underlining of problematic code
 - Note we assumed here that Docker and VsCode are already installed.
 
 **More details**
@@ -338,12 +345,12 @@ We advice to use the vscode devcontainer because then you can
 - nice Clean language support in vscode, and
 - you can run it on all platforms.
 
-### Develop on local machine
+### Local installation
 
 You offcourse can use this project also direclty on your local machine by installing
 Clean from https://clean.cs.ru.nl/ yourself.
 
-**Quick**
+#### Quick
 
 - open a bash shell. For Windows install https://gitforwindows.org and run "Git
   Bash".
@@ -359,7 +366,7 @@ Clean from https://clean.cs.ru.nl/ yourself.
   bin/HelloWorld
   ```
 
-**More details**
+#### More details
 
 - first check you platform is supported at
   [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports).
@@ -385,17 +392,22 @@ Clean from https://clean.cs.ru.nl/ yourself.
     configuration. When the `clean/` subfolder is not found it will fallback to the
     default settings, which could for example be a Clean installation in your home
     directory.
-- only on x64 based Linux you can
+
+#### IDE support on local machine
+
+- **VsCode with Clean extension**\
+   only on x64 based Linux you can
   [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)\
-  Note: nitrile is also available on Windows, however currently there is no Eastwood package for Windows,
-  so currently only x64 Linux is supported.\
-  So we can conclude for VsCode good editing support for Clean just use the VsCode
-  devcontainer.
-- the classic CleanIDE can be run on all platforms (using Wine on linux/MacOS)
-  and gives better language support then the language server in vscode.
-- vscode is a more modern editor giving you all new features, but the classic CleanIDE
-  gives better language support. So probably you can use both tools and use each for
-  what they are better in.     
+  Note: nitrile is also available on Windows, however currently there is no Eastwood package
+  for Windows, so currently only x64 Linux is supported. For other platforms you just
+  must use the VsCode devcontainer.
+- **classic CleanIDE**\
+  the classic CleanIDE can be run on all platforms (using Wine on linux/MacOS) and gives
+  better language support then the language server in vscode.
+
+The VsCode editor is a more modern editor giving you all new features, but the
+classic CleanIDE gives better language support. So probably you can use both tools
+and use each for what they are better in.
 
 ### Classic Clean IDE
 
@@ -421,10 +433,10 @@ $ wine CleanIDE.exe '.\HelloWorld.prj'
 
 For MacOS we even created an
 [`CleanIDE.app`](https://github.com/harcokuppens/clean-classic-helloworld/releases/download/macOS_application/CleanIDE.app.zip)
-which in the background runs the `CleanIDE.exe` with wine for you. It requires the `wine-stable` package to be installed with HomeBrew. Using this app you
-can open `.prj`,`dcl`, and `.icl` files from the Finder.  For more details about
-`CleanIDE.app` see
-[CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
+which in the background runs the `CleanIDE.exe` with wine for you. It requires the
+`wine-stable` package to be installed with HomeBrew. Using this app you can open
+`.prj`,`dcl`, and `.icl` files from the Finder. For more details about `CleanIDE.app`
+see [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
 #### Navigation tips
 
