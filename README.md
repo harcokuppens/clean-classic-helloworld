@@ -8,13 +8,14 @@ building other projects.
 The project is build with the `cpm` tool (Clean Project Manager). You can also build
 the project with the `clm` tool (CLean Make), however the `cpm` tool is preferred
 because it uses a project file which gives you fine level control of your project and
-which is also used by the Clean IDE (only for Windows).
+which is also used by the Clean IDE (native for Windows, with wine on MacOS and Linux).
 
 There is also a similar repository where we build the same HelloWorld Clean code
 using a Clean installation using the nitrile tool at:
 https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool
 installs the Clean runtime and its libraries as versioned packages, and also manages
-the build of the project.
+the build of the project, but you can also create a project file the nitrile project
+and build it with cpm or the CleanIDE.
 
 **Table of Contents**
 
@@ -264,16 +265,28 @@ folder sharing the `src/` and `clean/` folders.
 
 ## Setup Development environment
 
-You can either develop in Clean locally on your machine or in a devcontainer in
-vscode. We advice to use the vscode devcontainer because then you can
+There are multiple ways to setup your development environment:
 
-- quickly start developing,
-- nice Clean language support in vscode, and
-- you can run it on all platforms.
+- using a pre-setup devcontainer, this gives you
 
-Finally, instead of building Clean with the cpm commandline tool, we can also use the
-classic CleanIDE. The CleanIDE is a Windows application but can also be run with wine
-on Linux and MacOS.
+    - a quick start in developing,
+    - nice Clean language support in vscode, and
+    - you can run it on all platforms.  
+
+- using a local installation of Clean 
+
+    - no docker needed, but you must do the installation
+    - use the vscode editor for Clean, however it must  be noted
+      that the language server for Clean is currently only available for Linux
+    - use the classic CleanIDE. 
+        The CleanIDE is a Windows application but can also be run with wine
+        on Linux and MacOS.
+
+For getting started quickly we advice to use the vscode devcontainer, however this 
+quick start assumes that you already have docker installed, otherwise it might
+be faster to just do a local installation an use the classic CleanIDE.
+
+
 
 ### Easy develop in DevContainer
 
