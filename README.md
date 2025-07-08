@@ -23,8 +23,8 @@ and build it with cpm or the CleanIDE.
 <!--ts-->
 <!-- prettier-ignore -->
    * [HelloWorld program](#helloworld-program)
-   * [Project file](#project-file)
    * [Try out more examples](#try-out-more-examples)
+   * [Project file](#project-file)
    * [Clean documentation](#clean-documentation)
    * [Setup Development environment](#setup-development-environment)
       * [Pre-setup DevContainer in VsCode](#pre-setup-devcontainer-in-vscode)
@@ -32,15 +32,15 @@ and build it with cpm or the CleanIDE.
          * [Quick](#quick)
          * [More details](#more-details)
          * [IDE support on local machine](#ide-support-on-local-machine)
-      * [Classic Clean IDE](#classic-clean-ide)
-         * [Intro](#intro)
-         * [Navigation tips](#navigation-tips)
-         * [Important](#important)
+   * [Classic Clean IDE](#classic-clean-ide)
+      * [Intro](#intro)
+      * [Navigation tips](#navigation-tips)
+      * [Important](#important)
    * [Build project without project file using clm](#build-project-without-project-file-using-clm)
    * [Installation details](#installation-details)
       * [Clean installation](#clean-installation)
       * [The Eastwood language server for vscode](#the-eastwood-language-server-for-vscode)
-         * [use the Eastwood language server for vscode locally on x64 based Windows or Linux](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)
+         * [use the Eastwood language server for vscode locally on x64 based Linux](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-linux)
       * [Platforms the Clean compiler supports](#platforms-the-clean-compiler-supports)
          * [X64](#x64)
          * [ARM](#arm)
@@ -122,6 +122,43 @@ installation which comes with a 'Git Bash' application to open a bash shell.
 > [a bug in libmalloc](https://blackwinghq.com/blog/posts/playing-with-libmalloc/).
 > The `MallocNanoZone` environment variable is set automatically to 0 in vscode's
 > terminal, and when you use either `./cpm.bash` or `source env.bash`.
+
+## Try out more examples
+
+In the examples subfolder are some examples from the classic Clean distribution which
+can also be tried out instead of `HelloWorld.icl`.
+
+The examples come with a project file ( `.prj` ) next to its source file ( `.icl`).
+For easy building these project files build the executable next to its source and
+project file:
+
+```bash
+# build
+cpm examples/SmallExamples/fsieve.prj
+# run
+./examples/SmallExamples/fsieve
+```
+
+You can also copy the example to the `src/` folder, and create a new project for it
+which uses the same project layout as the `HelloWorld` project:
+
+```
+# our project layout convention requires source files in the src/ folder
+cp examples/SmallExamples/fsieve.icl src/
+# create sieve.prj
+./createProject.bash  fsieve
+# build
+cpm fsieve.prj
+# run
+./bin/fsieve
+```
+
+The new `sieve.prj` file has its source in the `src/` folder and builds it result in
+the `bin/` folder.
+
+Now you have both `HelloWorld.prj` and `fsieve.prj` project files. This shows that
+you can have multiple project files next to each other in the root of your workspace
+folder sharing the `src/` and `clean/` folders.
 
 ## Project file
 
@@ -211,43 +248,6 @@ configuration files you need to know the possible values it can have:
 You can also edit the project easily with a GUI interface on Windows using the Clean
 IDE, see the
 [User Manual for Clean IDE on Windows](doc/2001_UserManual_Clean_IDE_for_Windows.pdf).
-
-## Try out more examples
-
-In the examples subfolder are some examples from the classic Clean distribution which
-can also be tried out instead of `HelloWorld.icl`.
-
-The examples come with a project file ( `.prj` ) next to its source file ( `.icl`).
-For easy building these project files build the executable next to its source and
-project file:
-
-```bash
-# build
-cpm examples/SmallExamples/fsieve.prj
-# run
-./examples/SmallExamples/fsieve
-```
-
-You can also copy the example to the `src/` folder, and create a new project for it
-which uses the same project layout as the `HelloWorld` project:
-
-```
-# our project layout convention requires source files in the src/ folder
-cp examples/SmallExamples/fsieve.icl src/
-# create sieve.prj
-./createProject.bash  fsieve
-# build
-cpm fsieve.prj
-# run
-./bin/fsieve
-```
-
-The new `sieve.prj` file has its source in the `src/` folder and builds it result in
-the `bin/` folder.
-
-Now you have both `HelloWorld.prj` and `fsieve.prj` project files. This shows that
-you can have multiple project files next to each other in the root of your workspace
-folder sharing the `src/` and `clean/` folders.
 
 ## Clean documentation
 
@@ -339,12 +339,6 @@ that the devcontainer is built specifically for the `x64` architecture. Neverthe
 it works seamlessly on Mac and Windows machines with the `ARM64` architecture thanks
 to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
 
-We advice to use the vscode devcontainer because then you can
-
-- quickly start developing,
-- nice Clean language support in vscode, and
-- you can run it on all platforms.
-
 ### Local installation
 
 You offcourse can use this project also direclty on your local machine by installing
@@ -397,11 +391,11 @@ Clean from https://clean.cs.ru.nl/ yourself.
 
 - **VsCode with Clean extension**\
    only on x64 based Linux you can
-  [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)\
+  [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-linux)\
   Note: nitrile is also available on Windows, however currently there is no Eastwood package
   for Windows, so currently only x64 Linux is supported. For other platforms you just
   must use the VsCode devcontainer.
-- **classic CleanIDE**\
+- **classic Clean IDE**\
   the classic CleanIDE can be run on all platforms (using Wine on linux/MacOS) and gives
   better language support then the language server in vscode.
 
@@ -409,9 +403,9 @@ The VsCode editor is a more modern editor giving you all new features, but the
 classic CleanIDE gives better language support. So probably you can use both tools
 and use each for what they are better in.
 
-### Classic Clean IDE
+## Classic Clean IDE
 
-#### Intro
+### Intro
 
 The Clean IDE is currently only available for Windows. However using the wine tool
 you can run the CleanIDE on both Linux and MacOS.
@@ -438,7 +432,7 @@ which in the background runs the `CleanIDE.exe` with wine for you. It requires t
 `.prj`,`dcl`, and `.icl` files from the Finder. For more details about `CleanIDE.app`
 see [CleanIDE-wine-app-MacOS](./resources/CleanIDE-wine-app-MacOS/README.md).
 
-#### Navigation tips
+### Navigation tips
 
 The following shortcuts make navigation your source code in the IDE much easier:
 
@@ -467,7 +461,7 @@ The following shortcuts make navigation your source code in the IDE much easier:
 For more details read the
 [User Manual for Clean IDE on Windows](doc/2001_UserManual_Clean_IDE_for_Windows.pdf)
 
-#### Important
+### Important
 
 - Due to Wine limitations the MacOS application always launches a new Clean IDE
   instance when opening a `.prj`, `.icl`, or `.dcl` file.
@@ -589,11 +583,17 @@ Please note that the devcontainer is build specifically for the `x64` architectu
 Nevertheless, it works seamlessly on Mac and Windows machines with the `ARM64`
 architecture thanks to Docker Desktop’s support for `QEMU` emulation for `ARM64`.
 
-#### use the Eastwood language server for vscode locally on x64 based Windows or Linux
+#### use the Eastwood language server for vscode locally on x64 based Linux
 
 You have to first [install nitrile](https://clean-lang.org/about.html#install), then
-install eastwood with nitrile with the command 'nitrile global install eastwood',
-then finally you can install the
+install eastwood with nitrile with the command 'nitrile global install eastwood'.
+
+Note that the
+[Eastwood language server nitrile package](https://clean-lang.org/pkg/eastwood/) is
+only available for Linux, and not for Windows, so unfortunately Windows is not
+supported.
+
+Then finally you can install the
 ["Clean" extension in vscode](https://marketplace.visualstudio.com/items?itemName=TOPSoftware.clean-vs-code).
 If you then open this project folder with vscode you can edit Clean with the support
 of the Eastwood Language Server in vscode.
@@ -612,9 +612,6 @@ file in your workspace:
   "terminal.integrated.defaultProfile.windows": "Git Bash"
 }
 ```
-
-Update: currently there is no Eastwood package for Windows, so only Linux is
-supported.
 
 ### Platforms the Clean compiler supports
 
