@@ -286,7 +286,9 @@ For getting started quickly we advice to use the vscode devcontainer, however th
 quick start assumes that you already have docker installed, otherwise it might
 be faster to just do a local installation an use the classic CleanIDE.
 
-
+VsCode is a more modern editor giving you all new features, but the classic CleanIDE
+gives better language support. So probably you can use both tools and use each for
+what they are better in.   
 
 ### Easy develop in DevContainer
 
@@ -383,12 +385,17 @@ Clean from https://clean.cs.ru.nl/ yourself.
     configuration. When the `clean/` subfolder is not found it will fallback to the
     default settings, which could for example be a Clean installation in your home
     directory.
-- only on x64 based Windows or Linux you can
+- only on x64 based Linux you can
   [use vscode with Clean language support locally](#use-the-eastwood-language-server-for-vscode-locally-on-x64-based-windows-or-linux)\
-  Update: currently there is no Eastwood package for Windows, so currently only x64 Linux
-  is supported.\
+  Note: nitrile is also available on Windows, however currently there is no Eastwood package for Windows,
+  so currently only x64 Linux is supported.\
   So we can conclude for VsCode good editing support for Clean just use the VsCode
   devcontainer.
+- the classic CleanIDE can be run on all platforms (using Wine on linux/MacOS)
+  and gives better language support then the language server in vscode.
+- vscode is a more modern editor giving you all new features, but the classic CleanIDE
+  gives better language support. So probably you can use both tools and use each for
+  what they are better in.     
 
 ### Classic Clean IDE
 
