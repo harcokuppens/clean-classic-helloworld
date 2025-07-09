@@ -16,7 +16,8 @@ using a Clean installation using the nitrile tool at:
 https://github.com/harcokuppens/clean-nitrile-helloworld.git . The nitrile tool
 installs the Clean runtime and its libraries as versioned packages, and also manages
 the build of the project, but you can also create a project file the nitrile project
-and build it with cpm or the CleanIDE.
+and build it with cpm or the CleanIDE. Combining nitrile with Clean project files 
+gives us the best of both worlds.
 
 **Table of Contents**
 
