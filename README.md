@@ -407,8 +407,13 @@ and use each for what they are better in.
 
 ### Intro
 
-The Clean IDE is currently only available for Windows. However using the wine tool
-you can run the CleanIDE on both Linux and MacOS.
+The CleanIDE is only available on Windows, however using wine you can nowadays run it
+fine on MacOS.
+
+On Linux it works, but not perfect. For example under linux when you run a console
+application, then it doesn't open a console, but instead the console output goes to
+the terminal which launches the CleanIDE. Also there are problems with 4k monitors,
+where everything is shown very small. I find this pretty annoying.
 
 On Windows you can run the CleanIDE from the "Git Bash" shell with command:
 
@@ -430,7 +435,8 @@ For MacOS we even created an
 which in the background runs the `CleanIDE.exe` with wine for you. It requires the
 `wine-stable` package to be installed with HomeBrew. Using this app you can open
 `.prj`,`dcl`, and `.icl` files from the Finder. For more details about `CleanIDE.app`
-see [CleanIDE-wine-app-MacOS](https://github.com/harcokuppens/CleanIDE-wine-app-MacOS).
+see
+[CleanIDE-wine-app-MacOS](https://github.com/harcokuppens/CleanIDE-wine-app-MacOS).
 
 ### Navigation tips
 
